@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="90" fill="#0d1117"/>
+
+  <!-- 外圈渐变环 -->
+  <circle cx="100" cy="100" r="85" stroke="#10b981" stroke-width="4" fill="none" opacity="0.8"/>
+
+  <!-- 盾牌主体 -->
+  <path d="M100 35 L145 55 L145 95 C145 125 125 150 100 165 C75 150 55 125 55 95 L55 55 L100 35Z"
+        fill="#1f2937"
+        stroke="#10b981"
+        stroke-width="3"/>
+
+  <!-- 对勾标记 -->
+  <path d="M85 100 L95 110 L120 80"
+        stroke="#10b981"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+</svg>
