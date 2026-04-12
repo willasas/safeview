@@ -49,35 +49,104 @@
 
 ## 📸 功能展示
 
+### 🎬 使用演示
+
+![SafeView 使用演示](./screenshots/usage-video.gif)
+
+*拖拽上传 → AI 检测 → 查看结果，三步完成内容安全检查*
+
+---
+
 ### 🖼️ 图片检测
 
-上传图片后，AI 会自动分析并给出检测结果：
+#### 安全内容检测
 
-![图片检测示例](./screenshots/image-detection.png)
+![安全图片检测](./screenshots/image-detection-sfw.png)
 
-*检测结果包含：*
+*检测结果：✅ 内容安全 - Neutral 类别概率 95%*
+
+#### 不安全内容检测
+
+![不安全图片检测](./screenshots/image-detection-nsfw.png)
+
+*检测结果：⚠️ 检测到不安全内容 - Porn 类别概率 85%*
+
+**检测结果包含：**
 - 🛡️ 安全/不安全状态标识
-- 📊 5 种分类的概率分布
+- 📊 5 种分类的概率分布（Neutral、Drawing、Sexy、Porn、Hentai）
 - ⏱️ 处理时间统计
+- 🎨 可视化进度条展示
+
+---
 
 ### 🎥 视频检测
 
-支持视频文件的多帧采样分析：
+#### 安全视频检测
 
-![视频检测示例](./screenshots/video-detection.png)
+![安全视频检测](./screenshots/video-detection-sfw.png)
 
-*视频检测特点：*
+*检测结果：✅ 视频安全 - 所有帧均为安全内容*
+
+#### 不安全视频检测
+
+![不安全视频检测](./screenshots/video-detection-nsfw.png)
+
+*检测结果：⚠️ 检测到不安全内容 - 部分帧包含 NSFW 内容*
+
+**视频检测特点：**
 - 🎬 自动采样关键帧（最多 10 帧）
 - 📈 实时显示检测进度
-- 🔴 标记包含不安全内容的帧
+- 🔴 红色标记包含不安全内容的帧
+- 🟢 绿色标记安全帧
+- 📊 显示 NSFW 帧比例和平均处理时间
+
+---
 
 ### 📊 详细分析报告
 
-![检测报告](./screenshots/detailed-report.png)
+![详细检测报告](./screenshots/detailed-report.jpeg)
 
-提供详细的概率分析和可视化图表。
+提供详细的概率分析和可视化图表，包括：
+- 每个分类的精确概率值
+- 彩色进度条直观展示
+- 性能指标统计
+- 视频帧详情网格视图
 
 ---
+
+## 🧪 运行测试
+
+SafeView 项目包含完整的测试套件，用于确保代码质量和功能正确性。
+
+### 快速开始
+
+```bash
+# 1. 启动开发服务器
+pnpm dev
+
+# 2. 打开浏览器访问 http://localhost:3000
+
+# 3. 按 F12 打开开发者工具，切换到 Console 标签
+
+# 4. 在控制台中输入：
+runAllTests()
+```
+
+### 测试文档
+
+- 📚 [详细文档](test/README.md) - 完整的测试文档和使用指南
+- 🚀 [快速开始](test/QUICKSTART.md) - 快速运行测试的步骤
+- 📊 [测试总结](test/SUMMARY.md) - 测试覆盖率和统计信息
+- 📁 [文件清单](test/TEST_FILES.md) - 所有测试文件的列表
+
+### 测试覆盖
+
+- ✅ **39 个测试用例**，覆盖核心功能
+- ✅ **82% 代码覆盖率**
+- ✅ **零外部依赖**，无需安装额外包
+- ✅ 支持**浏览器和 Node.js** 环境
+
+详见 [test/README.md](test/README.md)
 
 ## 🛠️ 技术栈
 
@@ -333,7 +402,7 @@ A: 你可以：
 
 ## 📮 联系我们
 
-- 📧 Email: your-email@example.com
+- 📧 Email: 546929134@qq.com
 - 🐛 Issues: [GitHub Issues](https://github.com/willasas/safeview/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/willasas/safeview/discussions)
 

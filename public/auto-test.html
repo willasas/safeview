@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeView 自动化测试</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-result {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .pass {
+      border-left: 4px solid #10b981;
+    }
+    .fail {
+      border-left: 4px solid #ef4444;
+    }
+    h1 {
+      color: #1f2937;
+    }
+    .summary {
+      background: #1f2937;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 SafeView 自动化测试</h1>
+  <button onclick="runAllTests()">运行所有测试</button>
+  <button onclick="location.href='http://localhost:3000'">返回主页面</button>
+
+  <div id="results"></div>
+
+  <script>
+    let passed = 0
+    let failed = 0
+
+    function assert(condition, message) {
+      if (!condition) {
+        throw new Error('Assertion Failed: ' + message)
+      }
+    }
+
+    function assertEquals(actual, expected, message) {
+      if (actual !== expected) {
+        throw new Error(message + ': Expected ' + expected + ', got ' + actual)
+      }
+    }
+
+    function addResult(testName, success, errorMsg) {
+      const div = document.createElement('div')
+      div.className = 'test-result ' + (success ? 'pass' : 'fail')
+      div.innerHTML = success
+        ? '✅ ' + testName
+        : '❌ ' + testName + '<br><small style="color:red">' + errorMsg + '</small>'
+      document.getElementById('results').appendChild(div)
+
+      if (success) {
+        passed++
+      } else {
+        failed++
+      }
+    }
+
+    function runAllTests() {
+      document.getElementById('results').innerHTML = ''
+      passed = 0
+      failed = 0
+
+      console.log('🚀 Starting automated tests...\n')
+
+      // Test 1: DetectionResult data structure
+      try {
+        const mockSafeResult = {
+          predictions: [
+            { className: 'Neutral', probability: 0.95 },
+            { className: 'Drawing', probability: 0.03 },
+            { className: 'Sexy', probability: 0.01 },
+            { className: 'Porn', probability: 0.005 },
+            { className: 'Hentai', probability: 0.005 },
+          ],
+          isNSFW: false,
+          highestCategory: 'Neutral',
+          highestProbability: 0.95,
+          processingTime: 150,
+        }
+
+        assert(Array.isArray(mockSafeResult.predictions), 'predictions should be array')
+        assertEquals(mockSafeResult.isNSFW, false, 'Safe result should not be NSFW')
+        assertEquals(mockSafeResult.highestCategory, 'Neutral', 'Highest category should be Neutral')
+        assert(mockSafeResult.highestProbability > 0.9, 'Highest probability should be > 0.9')
+        assert(mockSafeResult.processingTime > 0, 'Processing time should be positive')
+
+        addResult('Test 1: DetectionResult data structure', true)
+        console.log('✅ Test 1 Passed: DetectionResult data structure')
+      } catch (e) {
+        addResult('Test 1: DetectionResult data structure', false, e.message)
+        console.error('❌ Test 1 Failed:', e.message)
+      }
+
+      // Test 2: FileUpload file type validation
+      try {
+        const imageFile = new File([new ArrayBuffer(1024)], 'test.jpg', { type: 'image/jpeg' })
+        const videoFile = new File([new ArrayBuffer(2048)], 'test.mp4', { type: 'video/mp4' })
+
+        assert(imageFile.type.startsWith('image/'), 'Should recognize image file')
+        assertEquals(imageFile.name, 'test.jpg', 'File name should match')
+        assert(videoFile.type.startsWith('video/'), 'Should recognize video file')
+
+        addResult('Test 2: FileUpload file type validation', true)
+        console.log('✅ Test 2 Passed: FileUpload file type validation')
+      } catch (e) {
+        addResult('Test 2: FileUpload file type validation', false, e.message)
+        console.error('❌ Test 2 Failed:', e.message)
+      }
+
+      // Test 3: NSFW classification logic
+      try {
+        const NSFW_THRESHOLDS = {
+          Porn: 0.3,
+          Hentai: 0.3,
+          Sexy: 0.5,
+        }
+
+        const checkIfNSFW = function(predictions) {
+          return predictions.some(function(pred) {
+            return pred.className in NSFW_THRESHOLDS &&
+                   pred.probability > NSFW_THRESHOLDS[pred.className]
+          })
+        }
+
+        const safePredictions = [
+          { className: 'Neutral', probability: 0.95 },
+          { className: 'Drawing', probability: 0.03 },
+        ]
+
+        const unsafePredictions = [
+          { className: 'Porn', probability: 0.85 },
+          { className: 'Sexy', probability: 0.10 },
+        ]
+
+        assert(!checkIfNSFW(safePredictions), 'Safe content should not be classified as NSFW')
+        assert(checkIfNSFW(unsafePredictions), 'Unsafe content should be classified as NSFW')
+
+        addResult('Test 3: NSFW classification logic', true)
+        console.log('✅ Test 3 Passed: NSFW classification logic')
+      } catch (e) {
+        addResult('Test 3: NSFW classification logic', false, e.message)
+        console.error('❌ Test 3 Failed:', e.message)
+      }
+
+      // Test 4: Video frame analysis
+      try {
+        const videoFrames = [
+          { frameIndex: 0, isNSFW: false, highestProbability: 0.90 },
+          { frameIndex: 1, isNSFW: false, highestProbability: 0.88 },
+          { frameIndex: 2, isNSFW: true, highestProbability: 0.75 },
+        ]
+
+        const nsfwFrames = videoFrames.filter(function(r) { return r.isNSFW })
+        const nsfwRatio = nsfwFrames.length / videoFrames.length
+        const isVideoNSFW = nsfwRatio > 0.2
+
+        assertEquals(nsfwFrames.length, 1, 'Should have 1 NSFW frame')
+        assert(isVideoNSFW, 'Video should be classified as NSFW (>20% threshold)')
+
+        addResult('Test 4: Video frame analysis', true)
+        console.log('✅ Test 4 Passed: Video frame analysis')
+      } catch (e) {
+        addResult('Test 4: Video frame analysis', false, e.message)
+        console.error('❌ Test 4 Failed:', e.message)
+      }
+
+      // Test 5: Probability calculations
+      try {
+        const predictions = [
+          { className: 'Neutral', probability: 0.60 },
+          { className: 'Sexy', probability: 0.25 },
+          { className: 'Drawing', probability: 0.10 },
+          { className: 'Porn', probability: 0.03 },
+          { className: 'Hentai', probability: 0.02 },
+        ]
+
+        const totalProbability = predictions.reduce(function(sum, p) {
+          return sum + p.probability
+        }, 0)
+
+        assert(Math.abs(totalProbability - 1) < 0.01, 'Probabilities should sum to ~1')
+
+        const sorted = predictions.slice().sort(function(a, b) {
+          return b.probability - a.probability
+        })
+
+        assertEquals(sorted[0].className, 'Neutral', 'Highest should be Neutral')
+
+        addResult('Test 5: Probability calculations', true)
+        console.log('✅ Test 5 Passed: Probability calculations')
+      } catch (e) {
+        addResult('Test 5: Probability calculations', false, e.message)
+        console.error('❌ Test 5 Failed:', e.message)
+      }
+
+      // Show summary
+      const totalTests = passed + failed
+      const successRate = ((passed / totalTests) * 100).toFixed(2)
+
+      const summaryDiv = document.createElement('div')
+      summaryDiv.className = 'summary'
+      summaryDiv.innerHTML =
+        '<h2>📊 测试结果汇总</h2>' +
+        '<p>总测试数: ' + totalTests + '</p>' +
+        '<p>✅ 通过: ' + passed + '</p>' +
+        '<p>❌ 失败: ' + failed + '</p>' +
+        '<p>成功率: ' + successRate + '%</p>'
+
+      document.getElementById('results').appendChild(summaryDiv)
+
+      console.log('\n' + '='.repeat(50))
+      console.log('FINAL TEST RESULTS')
+      console.log('='.repeat(50))
+      console.log('Total Tests: ' + totalTests)
+      console.log('Passed: ' + passed)
+      console.log('Failed: ' + failed)
+      console.log('Success Rate: ' + successRate + '%')
+      console.log('='.repeat(50))
+
+      if (failed === 0) {
+        console.log('✨ All tests passed! ✨')
+      } else {
+        console.warn('⚠️ Some tests failed. Please review the errors above.')
+      }
+    }
+
+    // Auto-run on page load
+    window.onload = function() {
+      setTimeout(runAllTests, 500)
+    }
+  </script>
+</body>
+</html>

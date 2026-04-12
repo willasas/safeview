@@ -1,6 +1,30 @@
 # 📸 截图说明
 
-本文件夹用于存放项目截图，请在运行项目后截取以下场景的图片：
+本文件夹用于存放项目截图和宣传素材。
+
+## ✅ 已完成截图
+
+### 🎬 演示视频
+- ✅ **usage-video.gif** (3.1 MB) - 完整使用流程演示 GIF
+
+### 🖼️ 图片检测
+- ✅ **image-detection-sfw.png** (706 KB) - 安全图片检测结果
+- ✅ **image-detection-nsfw.png** (278 KB) - 不安全图片检测结果
+- ⚠️ **image-detection.png** (346 KB) - 通用示例（旧版）
+
+### 🎥 视频检测
+- ✅ **video-detection-sfw.png** (813 KB) - 安全视频检测结果
+- ✅ **video-detection-nsfw.png** (404 KB) - 不安全视频检测结果
+- ⚠️ **video-detection.png** (1000 KB) - 通用示例（旧版）
+
+### 📊 详细报告
+- ✅ **detailed-report.jpeg** (94 KB) - 详细检测报告
+
+### 📝 文档
+- ✅ **WECHAT_ARTICLE.md** - 微信公众号文章模板（已更新配图指南）
+- ✅ **README.md** - 本文档
+
+---
 
 ## 需要截取的图片
 

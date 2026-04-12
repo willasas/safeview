@@ -8,6 +8,10 @@
     "cmdk",
     "vaul",
     "lingma",
+    "safeview",
+    "linecap",
+    "linejoin",
+    "vercel",
   ],
   "css.lint.unknownAtRules": "ignore"
 }

@@ -1,12 +1,15 @@
 {
-  "name": "my-project",
-  "version": "0.1.0",
+  "name": "safeview",
+  "version": "1.0.0",
+  "description": "AI-powered local NSFW content detection tool built with TensorFlow.js",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "echo 请在浏览器中运行测试：1. pnpm dev 2. 打开 http://localhost:3000 3. F12 打开控制台 4. 输入: runAllTests()",
+    "test:docs": "echo \"查看测试文档: test/README.md 或 test/QUICKSTART.md\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

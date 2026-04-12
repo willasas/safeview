@@ -6,6 +6,34 @@ import "@tensorflow/tfjs-backend-cpu";
 import "@tensorflow/tfjs-backend-webgl";
 import * as nsfwjs from "nsfwjs";
 
+// 全局标志：防止 TF.js 后端重复注册警告
+let tfBackendInitialized = false;
+
+// 抑制 TensorFlow.js 的内核注册警告和 NSFW.js 的模型加载日志
+if (typeof window !== "undefined" && !(globalThis as any).__safeview_logs_patched) {
+  (globalThis as any).__safeview_logs_patched = true;
+
+  // 过滤 console.warn
+  const originalWarn = console.warn;
+  console.warn = (...args: any[]) => {
+    const msg = String(args[0] || "");
+    if (msg.includes("already registered")) return;
+    originalWarn.apply(console, args);
+  };
+
+  // 过滤 console.log / console.info（NSFW.js 的模型提示）
+  const originalLog = console.log;
+  const originalInfo = console.info;
+  const filterNSFWLogs = (...args: any[]) => {
+    const msg = String(args[0] || "");
+    // 忽略 NSFW.js 的默认模型提示
+    if (msg.includes("modelOrUrl") || msg.includes("MobileNetV2")) return;
+    originalLog.apply(console, args);
+  };
+  console.log = filterNSFWLogs;
+  console.info = filterNSFWLogs;
+}
+
 // NSFW.js 的分类结果类型
 export interface NSFWPrediction {
   className: "Drawing" | "Hentai" | "Neutral" | "Porn" | "Sexy";
@@ -52,18 +80,22 @@ export function useNSFW() {
     try {
       setLoadProgress(10);
 
-      // 设置 TensorFlow.js 后端
-      await tf.ready();
-      setLoadProgress(20);
+      // 设置 TensorFlow.js 后端（仅初始化一次）
+      if (!tfBackendInitialized) {
+        await tf.ready();
+        setLoadProgress(20);
 
-      try {
-        await tf.setBackend("webgl");
-        await tf.ready();
-      } catch (webglError) {
-        console.warn("WebGL backend unavailable, falling back to CPU.", webglError);
-        await tf.setBackend("cpu");
-        await tf.ready();
+        try {
+          await tf.setBackend("webgl");
+          await tf.ready();
+        } catch (webglError) {
+          console.warn("WebGL backend unavailable, falling back to CPU.");
+          await tf.setBackend("cpu");
+          await tf.ready();
+        }
+        tfBackendInitialized = true;
       }
+
       setLoadProgress(30);
 
       // 使用 nsfwjs 加载模型 - 使用默认的 MobileNetV2 模型
@@ -218,13 +250,25 @@ export function useNSFW() {
 
       let predictions: NSFWPrediction[];
 
-      if (modelRef.current) {
-        const rawPredictions = await modelRef.current.classify(videoElement);
-        predictions = rawPredictions.map((p) => ({
-          className: p.className as NSFWPrediction["className"],
-          probability: p.probability,
-        }));
+      // 确保视频有有效尺寸
+      if (videoElement.videoWidth === 0 || videoElement.videoHeight === 0) {
+        console.warn(`Frame ${frameIndex}: Video dimensions are 0, using fallback.`);
+        predictions = analyzeColors(videoElement);
+      } else if (modelRef.current) {
+        try {
+          // 使用 nsfwjs 模型
+          const rawPredictions = await modelRef.current.classify(videoElement);
+          predictions = rawPredictions.map((p) => ({
+            className: p.className as NSFWPrediction["className"],
+            probability: p.probability,
+          }));
+        } catch (err) {
+          console.error(`Frame ${frameIndex} classification error:`, err);
+          // 如果 AI 模型失败，回退到颜色分析
+          predictions = analyzeColors(videoElement);
+        }
       } else {
+        // 使用备用方案
         predictions = analyzeColors(videoElement);
       }
 
@@ -269,6 +313,9 @@ export function useNSFW() {
           };
           videoElement.addEventListener("seeked", onSeeked);
         });
+
+        // 等待一帧以确保视频元素已渲染当前帧
+        await new Promise(requestAnimationFrame);
 
         const result = await checkVideoFrame(videoElement, i);
         results.push(result);

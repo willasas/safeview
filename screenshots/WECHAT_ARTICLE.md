@@ -154,16 +154,84 @@ https://github.com/willasas/safeview
 - **风格**：科技感、简洁、专业
 - **工具推荐**：Canva、Figma、Photoshop
 
-### 功能展示图（3-5张）
-1. **主界面截图** - 展示整体 UI
-2. **图片检测示例** - 展示检测结果
-3. **视频检测示例** - 展示进度条和帧分析
-4. **详细报告** - 展示概率分析图表
-5. **移动端适配** - 展示手机端效果
+### 功能展示图（已准备）
+✅ **使用演示 GIF**：`screenshots/usage-video.gif`
+- 展示完整的操作流程
+- 拖拽上传 → AI 检测 → 查看结果
+
+✅ **图片检测 - 安全内容**：`screenshots/image-detection-sfw.png`
+- 展示安全图片的检测结果
+- Neutral 类别概率 95%
+
+✅ **图片检测 - 不安全内容**：`screenshots/image-detection-nsfw.png`
+- 展示不安全图片的检测结果
+- Porn 类别概率 85%
+
+✅ **视频检测 - 安全内容**：`screenshots/video-detection-sfw.png`
+- 展示安全视频的检测结果
+- 所有帧均为安全内容
+
+✅ **视频检测 - 不安全内容**：`screenshots/video-detection-nsfw.png`
+- 展示不安全视频的检测结果
+- 部分帧包含 NSFW 内容
+
+✅ **详细检测报告**：`screenshots/detailed-report.jpeg`
+- 展示详细的概率分析
+- 彩色进度条和性能指标
 
 ### 技术架构图（可选）
 - 展示本地处理的架构优势
 - 可以用简单的流程图表示
+
+---
+
+## 📸 完整配图指南
+
+### 文章配图顺序建议
+
+#### 1. 开头引入后 - 使用演示 GIF
+```
+![SafeView 使用演示](../screenshots/usage-video.gif)
+*拖拽上传 → AI 检测 → 查看结果，三步完成内容安全检查*
+```
+
+#### 2. 核心功能介绍 - 图片检测对比
+```
+**安全内容检测：**
+![安全图片检测](../screenshots/image-detection-sfw.png)
+*检测结果：✅ 内容安全 - Neutral 类别概率 95%*
+
+**不安全内容检测：**
+![不安全图片检测](../screenshots/image-detection-nsfw.png)
+*检测结果：⚠️ 检测到不安全内容 - Porn 类别概率 85%*
+```
+
+#### 3. 视频检测功能 - 视频检测对比
+```
+**安全视频检测：**
+![安全视频检测](../screenshots/video-detection-sfw.png)
+*检测结果：✅ 视频安全 - 所有帧均为安全内容*
+
+**不安全视频检测：**
+![不安全视频检测](../screenshots/video-detection-nsfw.png)
+*检测结果：⚠️ 检测到不安全内容 - 部分帧包含 NSFW 内容*
+```
+
+#### 4. 技术亮点部分 - 详细报告
+```
+![详细检测报告](../screenshots/detailed-report.jpeg)
+*提供详细的概率分析和可视化图表*
+```
+
+### 配图说明文案
+
+每张图片下方添加简短说明，帮助读者理解：
+
+- **GIF 动图**：“只需拖拽文件，AI 自动分析，秒出结果”
+- **安全检测**：“绿色标识表示内容安全，可放心使用”
+- **不安全检测**：“红色警示提醒潜在风险，避免不当内容”
+- **视频检测**：“多帧采样分析，全面评估视频内容”
+- **详细报告**：“5 种分类概率，精确到小数点后两位”
 
 ---
 
@@ -227,8 +295,8 @@ https://github.com/willasas/safeview
 
 ### 标签建议
 ```
-#人工智能 #机器学习 #开源项目 #Web开发 
-#NextJS #React #TensorFlow #隐私保护 
+#人工智能 #机器学习 #开源项目 #Web开发
+#NextJS #React #TensorFlow #隐私保护
 #前端工程 #技术创新 #程序员 #编程
 ```
 
