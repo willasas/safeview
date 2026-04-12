@@ -1,5 +1,5 @@
-import { Shield, Lock, Zap, Smartphone } from "lucide-react";
-import { NSFWDetector } from "@/components/nsfw-detector";
+import { Shield, Lock, Zap, Smartphone, FolderOpen } from "lucide-react";
+import { EnhancedNSFWDetector } from "@/components/enhanced-nsfw-detector";
 
 export default function Home() {
   return (
@@ -39,7 +39,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
             <Shield className="h-4 w-4" />
-            基于 TensorFlow.js 的本地 AI 检测
+            基于 TensorFlow.js 的本地 AI 检测 v2.0
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight text-balance">
@@ -48,8 +48,8 @@ export default function Home() {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            上传图片或视频，AI 将自动分析内容是否包含不适宜展示的元素。
-            所有处理均在浏览器本地完成，保护您的隐私。
+            支持批量检测图片和视频，AI 将自动分析内容是否包含不适宜展示的元素。
+            所有处理均在浏览器本地完成，保护您的隐私。新增多模型支持、自定义阈值、报告导出等功能。
           </p>
         </div>
       </section>
@@ -64,14 +64,14 @@ export default function Home() {
               description="所有文件仅在本地处理，不会上传到任何服务器"
             />
             <FeatureCard
-              icon={<Zap className="h-5 w-5" />}
-              title="快速检测"
-              description="利用 GPU 加速，图片检测仅需数十毫秒"
+              icon={<FolderOpen className="h-5 w-5" />}
+              title="批量检测"
+              description="支持文件夹批量检测，自动整理不安全内容"
             />
             <FeatureCard
-              icon={<Smartphone className="h-5 w-5" />}
-              title="多端适配"
-              description="支持手机、平板、电脑等各类设备"
+              icon={<Zap className="h-5 w-5" />}
+              title="多模型支持"
+              description="提供多种 AI 模型和自定义阈值设置"
             />
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function Home() {
 
       {/* Main Detector */}
       <section className="px-4 pb-16 md:pb-24">
-        <NSFWDetector />
+        <EnhancedNSFWDetector />
       </section>
 
       {/* Footer */}
