@@ -1,0 +1,6 @@
+# SafeView robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://safeview.vercel.app/sitemap.xml
