@@ -41,7 +41,8 @@
 
 ## 🚀 在线体验
 
-👉 **立即体验**：[SafeView 在线演示](https://safeview.vercel.app) *(待部署)*
+👉 **立即体验**：[SafeView 在线演示1](https://safeview-sable.vercel.app/)
+👉 **立即体验**：[SafeView 在线演示2](https://checkissafe.netlify.app/)
 
 无需安装，打开浏览器即可使用！
 

@@ -58,3 +58,5 @@ test-dist/
 
 # Optional eslint cache
 .eslintcache
+# Local Netlify folder
+.netlify

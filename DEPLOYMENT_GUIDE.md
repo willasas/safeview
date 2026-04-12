@@ -107,9 +107,13 @@ pnpm dev
 
 ---
 
-## 🎯 下一步：部署到 Vercel
+## 🎯 下一步：部署平台选择
 
-### 方法 1: 通过 Vercel 网页（推荐）
+你可以选择以下任一平台进行部署：
+
+### 选项 A: 部署到 Vercel（推荐）
+
+#### 方法 1: 通过 Vercel 网页
 
 1. 访问 https://vercel.com
 2. 点击 "Add New Project"
@@ -117,9 +121,8 @@ pnpm dev
 4. 保持默认配置
 5. 点击 "Deploy"
 
-### 方法 2: 通过命令行
+#### 方法 2: 通过命令行
 
-```bash
 # 安装 Vercel CLI
 npm i -g vercel
 
@@ -128,7 +131,36 @@ vercel login
 
 # 部署
 vercel --prod
-```
+
+### 选项 B: 部署到 Netlify
+
+#### 方法 1: 通过 Netlify 网页
+
+1. 访问 https://app.netlify.com/start
+2. 点击 "New site from Git"
+3. 选择 GitHub 并授权
+4. 选择仓库 `willasas/safeview`
+5. 构建配置（通常自动检测 Next.js）：
+   - **Build command**: `pnpm build` (或 `npm run build`)
+   - **Publish directory**: `.next` (注意：Netlify 通常能自动识别 Next.js，若失败请尝试使用 Netlify Next.js Runtime 插件)
+   - **Node version**: 确保设置为项目所需的版本（如 18.x 或 20.x）
+6. 点击 "Deploy site"
+
+> **提示**: 对于 Next.js 项目，建议在 Netlify 中安装 "Essential Next.js" 插件以获得最佳支持。
+
+#### 方法 2: 通过 Netlify CLI
+
+# 安装 Netlify CLI
+npm install netlify-cli -g
+
+# 登录
+netlify login
+
+# 初始化并部署
+netlify init
+netlify deploy --prod
+
+
 
 ---
 
