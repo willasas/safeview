@@ -7,6 +7,7 @@ import {
   TrendingUp,
   AlertTriangle,
 } from "lucide-react";
+import { useI18n } from '@/contexts/i18n-context';
 import { cn } from "@/lib/utils";
 import type { NSFWResult, VideoFrameResult } from "@/hooks/use-nsfw";
 
@@ -18,19 +19,19 @@ interface DetectionResultProps {
 
 const CATEGORY_LABELS: Record<string, { label: string; description: string }> =
   {
-    Drawing: { label: "绘画/卡通", description: "手绘或动画内容" },
-    Hentai: { label: "动漫成人", description: "动漫风格的成人内容" },
-    Neutral: { label: "正常", description: "普通安全内容" },
-    Porn: { label: "色情", description: "成人色情内容" },
-    Sexy: { label: "性感", description: "性感但非色情内容" },
+    Drawing: { label: "", description: "" },
+    Hentai: { label: "", description: "" },
+    Neutral: { label: "", description: "" },
+    Porn: { label: "", description: "" },
+    Sexy: { label: "", description: "" },
   };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Drawing: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  Hentai: "bg-red-500/20 text-red-400 border-red-500/30",
-  Neutral: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  Porn: "bg-red-500/20 text-red-400 border-red-500/30",
-  Sexy: "bg-orange-500/20 text-orange-400 border-orange-500/30",
+  Drawing: "bg-blue-500",
+  Hentai: "bg-red-500",
+  Neutral: "bg-emerald-500",
+  Porn: "bg-red-500",
+  Sexy: "bg-orange-500",
 };
 
 export function DetectionResult({
@@ -38,6 +39,17 @@ export function DetectionResult({
   videoResults,
   type,
 }: DetectionResultProps) {
+  const { t } = useI18n();
+
+  // 动态设置分类标签
+  const categoryLabels: Record<string, { label: string; description: string }> = {
+    Drawing: { label: t('detector.result.categories.drawing'), description: t('detector.result.categories.drawingDesc') },
+    Hentai: { label: t('detector.result.categories.hentai'), description: t('detector.result.categories.hentaiDesc') },
+    Neutral: { label: t('detector.result.categories.neutral'), description: t('detector.result.categories.neutralDesc') },
+    Porn: { label: t('detector.result.categories.porn'), description: t('detector.result.categories.pornDesc') },
+    Sexy: { label: t('detector.result.categories.sexy'), description: t('detector.result.categories.sexyDesc') },
+  };
+
   if (!result && (!videoResults || videoResults.length === 0)) {
     return null;
   }
@@ -100,16 +112,16 @@ export function DetectionResult({
                 isNSFW ? "text-destructive" : "text-success"
               )}
             >
-              {isNSFW ? "检测到不安全内容" : "内容安全"}
+              {isNSFW ? t('detector.result.singleFile.unsafeDetected') : t('detector.result.singleFile.safeContent')}
             </h3>
             <p className="text-sm text-muted-foreground mt-1">
               {type === "image"
                 ? isNSFW
-                  ? "该图片可能包含不适宜内容"
-                  : "该图片未检测到不安全内容"
+                  ? t('detector.result.singleFile.imageUnsafe')
+                  : t('detector.result.singleFile.imageSafe')
                 : isNSFW
-                  ? `检测到 ${videoAnalysis?.nsfwFrames}/${videoAnalysis?.totalFrames} 帧包含不安全内容`
-                  : "该视频未检测到明显的不安全内容"}
+                  ? t('detector.result.singleFile.videoUnsafe').replace('{nsfw}', String(videoAnalysis?.nsfwFrames)).replace('{total}', String(videoAnalysis?.totalFrames))
+                  : t('detector.result.singleFile.videoSafe')}
             </p>
           </div>
         </div>
@@ -129,40 +141,35 @@ export function DetectionResult({
           )?.map((pred) => (
             <div key={pred.className} className="space-y-1.5">
               <div className="flex items-center justify-between text-sm">
-                <span className="flex items-center gap-2">
-                  <span
-                    className={cn(
-                      "px-2 py-0.5 rounded text-xs font-medium border",
-                      CATEGORY_COLORS[pred.className]
-                    )}
-                  >
-                    {CATEGORY_LABELS[pred.className]?.label || pred.className}
-                  </span>
-                  <span className="text-muted-foreground text-xs hidden sm:inline">
-                    {CATEGORY_LABELS[pred.className]?.description}
-                  </span>
+                <span className="text-foreground font-medium">
+                  {categoryLabels[pred.className]?.label || pred.className}
                 </span>
-                <span className="font-mono font-medium">
+                <span className="font-mono font-medium text-foreground">
                   {(pred.probability * 100).toFixed(1)}%
                 </span>
               </div>
               <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                <div 
+                <div
                   className={cn(
-                    "h-full rounded-full transition-all duration-500 progress-bar-fill",
-                    pred.className === "Neutral"
-                      ? "bg-emerald-500"
-                      : pred.className === "Drawing"
-                        ? "bg-blue-500"
-                        : pred.className === "Sexy"
-                          ? "bg-orange-500"
-                          : "bg-red-500"
+                    "h-full rounded-full transition-all duration-500",
+                    CATEGORY_COLORS[pred.className] || "bg-primary"
                   )}
-                  style={{ "--progress-width": `${pred.probability * 100}%` } as React.CSSProperties}
+                  style={{ width: `${pred.probability * 100}%` }}
                 />
               </div>
             </div>
           ))}
+        </div>
+
+        {/* 判定结果 */}
+        <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+          <span className="text-sm font-medium text-foreground">判定结果</span>
+          <span className={cn(
+            "px-2.5 py-1 rounded-full text-xs font-medium",
+            isNSFW ? "bg-destructive/20 text-destructive" : "bg-success/20 text-success"
+          )}>
+            {isNSFW ? "不安全" : "安全"}
+          </span>
         </div>
       </div>
 
@@ -211,7 +218,7 @@ export function DetectionResult({
             ))}
           </div>
           <p className="text-xs text-muted-foreground mt-3">
-            绿色表示安全，红色表示检测到不安全内容。悬停查看详情。
+            {t('detector.result.singleFile.colorLegend')}
           </p>
         </div>
       )}

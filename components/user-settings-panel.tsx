@@ -1,6 +1,7 @@
 "use client";
 
 import { Settings, Sliders, Target, Video, Eye, Shield } from "lucide-react";
+import { useI18n } from '@/contexts/i18n-context';
 import { cn } from "@/lib/utils";
 import type { UserSettings, ModelConfig } from "@/hooks/use-nsfw";
 import {
@@ -27,32 +28,34 @@ export function UserSettingsPanel({
   onSettingsChange,
   className,
 }: UserSettingsPanelProps) {
+  const { t } = useI18n();
+
   return (
     <div className={cn("rounded-xl border border-border bg-card p-4 md:p-6 space-y-6", className)}>
       <div className="flex items-center gap-2">
         <Settings className="h-5 w-5 text-primary" />
-        <h3 className="text-sm font-semibold text-foreground">检测设置</h3>
+        <h3 className="text-sm font-semibold text-foreground">{t('detector.settings.title')}</h3>
       </div>
 
       {/* 模型选择 */}
       <div className="space-y-3">
         <Label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Shield className="h-4 w-4 text-primary" />
-          AI 模型
+          {t('detector.settings.aiModel')}
         </Label>
         <Select
           value={settings.modelId}
           onValueChange={(value) => onSettingsChange({ modelId: value })}
         >
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="选择检测模型" />
+            <SelectValue placeholder={t('detector.settings.selectModel')} />
           </SelectTrigger>
           <SelectContent>
             {availableModels.map((model) => (
               <SelectItem key={model.id} value={model.id}>
                 <div>
-                  <p className="font-medium">{model.name}</p>
-                  <p className="text-xs text-muted-foreground">{model.description}</p>
+                  <p className="font-medium">{t(`detector.settings.models.${model.id}.name`)}</p>
+                  <p className="text-xs text-muted-foreground">{t(`detector.settings.models.${model.id}.description`)}</p>
                 </div>
               </SelectItem>
             ))}
@@ -64,13 +67,13 @@ export function UserSettingsPanel({
       <div className="space-y-4">
         <Label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Target className="h-4 w-4 text-primary" />
-          检测阈值
+          {t('detector.settings.thresholds')}
         </Label>
 
         {/* 色情阈值 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">色情 (Porn)</span>
+            <span className="text-sm text-muted-foreground">{t('detector.settings.porn')}</span>
             <span className="text-sm font-mono text-red-400">
               {(settings.pornThreshold * 100).toFixed(0)}%
             </span>
@@ -87,7 +90,7 @@ export function UserSettingsPanel({
         {/* 动漫成人阈值 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">动漫成人 (Hentai)</span>
+            <span className="text-sm text-muted-foreground">{t('detector.settings.hentai')}</span>
             <span className="text-sm font-mono text-red-400">
               {(settings.hentaiThreshold * 100).toFixed(0)}%
             </span>
@@ -104,7 +107,7 @@ export function UserSettingsPanel({
         {/* 性感阈值 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">性感 (Sexy)</span>
+            <span className="text-sm text-muted-foreground">{t('detector.settings.sexy')}</span>
             <span className="text-sm font-mono text-orange-400">
               {(settings.sexyThreshold * 100).toFixed(0)}%
             </span>
@@ -121,7 +124,7 @@ export function UserSettingsPanel({
         {/* 综合判定阈值 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">综合判定阈值</span>
+            <span className="text-sm text-muted-foreground">{t('detector.settings.combinedThreshold')}</span>
             <span className="text-sm font-mono text-primary">
               {(settings.combinedThreshold * 100).toFixed(0)}%
             </span>
@@ -134,7 +137,7 @@ export function UserSettingsPanel({
             step={1}
           />
           <p className="text-xs text-muted-foreground">
-            Porn×0.7 + Hentai×0.3 超过此阈值即判定为不安全
+            {t('detector.settings.combinedThresholdDesc')}
           </p>
         </div>
       </div>
@@ -143,11 +146,11 @@ export function UserSettingsPanel({
       <div className="space-y-3">
         <Label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Video className="h-4 w-4 text-primary" />
-          视频检测
+          {t('detector.settings.videoDetection')}
         </Label>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">采样帧数</span>
+            <span className="text-sm text-muted-foreground">{t('detector.settings.sampleFrames')}</span>
             <span className="text-sm font-mono text-primary">
               {settings.videoSampleFrames}
             </span>
@@ -160,7 +163,7 @@ export function UserSettingsPanel({
             step={5}
           />
           <p className="text-xs text-muted-foreground">
-            帧数越多检测越准确，但耗时更长
+            {t('detector.settings.sampleFramesDesc')}
           </p>
         </div>
       </div>
@@ -169,13 +172,13 @@ export function UserSettingsPanel({
       <div className="space-y-3">
         <Label className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Sliders className="h-4 w-4 text-primary" />
-          高级选项
+          {t('detector.settings.advancedOptions')}
         </Label>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <p className="text-sm text-foreground">仅检测动漫成人</p>
-            <p className="text-xs text-muted-foreground">忽略其他类别，仅关注 Hentai 内容</p>
+            <p className="text-sm text-foreground">{t('detector.settings.hentaiOnly')}</p>
+            <p className="text-xs text-muted-foreground">{t('detector.settings.hentaiOnlyDesc')}</p>
           </div>
           <Switch
             checked={settings.enableHentaiOnly}
@@ -185,8 +188,8 @@ export function UserSettingsPanel({
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <p className="text-sm text-foreground">批量检测模式</p>
-            <p className="text-xs text-muted-foreground">支持文件夹批量检测</p>
+            <p className="text-sm text-foreground">{t('detector.settings.batchMode')}</p>
+            <p className="text-xs text-muted-foreground">{t('detector.settings.batchModeDesc')}</p>
           </div>
           <Switch
             checked={settings.enableBatchMode}

@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { Upload, FolderOpen, FileImage, FileVideo, X, FolderTree } from "lucide-react";
+import { useI18n } from '@/contexts/i18n-context';
 import { cn } from "@/lib/utils";
 
 interface BatchFileUploadProps {
@@ -17,6 +18,7 @@ export function BatchFileUpload({
   disabled = false,
   className,
 }: BatchFileUploadProps) {
+  const { t } = useI18n();
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
@@ -51,7 +53,7 @@ export function BatchFileUpload({
         setSelectedFiles(validFiles);
         onFilesSelect(validFiles);
       } else {
-        alert("请选择有效的图片或视频文件");
+        alert(t('detector.upload.invalidFiles'));
       }
     },
     [disabled, onFilesSelect]
@@ -68,7 +70,7 @@ export function BatchFileUpload({
           setSelectedFiles(validFiles);
           onFilesSelect(validFiles);
         } else {
-          alert("文件夹中没有找到有效的图片或视频文件");
+          alert(t('detector.upload.noValidFiles'));
         }
       }
     },
@@ -126,12 +128,12 @@ export function BatchFileUpload({
 
           {/* 文件列表 */}
           <div className="max-h-60 overflow-y-auto p-4 space-y-2">
-            {imageFiles.slice(0, 5).map((file, index) => (
+            {imageFiles.map((file, index) => (
               <div
                 key={`img-${index}`}
                 className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50"
               >
-                <FileImage className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                <FileImage className="h-4 w-4 text-blue-500 shrink-0" />
                 <span className="text-sm text-foreground truncate flex-1">
                   {file.name}
                 </span>
@@ -140,12 +142,12 @@ export function BatchFileUpload({
                 </span>
               </div>
             ))}
-            {videoFiles.slice(0, 5).map((file, index) => (
+            {videoFiles.map((file, index) => (
               <div
                 key={`vid-${index}`}
                 className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50"
               >
-                <FileVideo className="h-4 w-4 text-purple-500 flex-shrink-0" />
+                <FileVideo className="h-4 w-4 text-purple-500 shrink-0" />
                 <span className="text-sm text-foreground truncate flex-1">
                   {file.name}
                 </span>
@@ -154,11 +156,6 @@ export function BatchFileUpload({
                 </span>
               </div>
             ))}
-            {selectedFiles.length > 10 && (
-              <p className="text-xs text-muted-foreground text-center pt-2">
-                ... 还有 {selectedFiles.length - 10} 个文件
-              </p>
-            )}
           </div>
         </div>
       ) : (
@@ -215,16 +212,16 @@ export function BatchFileUpload({
 
             <div className="space-y-2">
               <p className="text-base md:text-lg font-medium text-foreground">
-                拖拽文件到这里，或点击上传
+                {t('detector.upload.dragDrop')}
               </p>
               <p className="text-sm text-muted-foreground">
-                支持批量检测图片和视频文件
+                {t('detector.upload.supportText')}
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
               <span className="text-xs text-muted-foreground">
-                支持 JPG、PNG、GIF、WebP、MP4、WebM 等格式
+                {t('detector.upload.formats')}
               </span>
               <label
                 htmlFor="folder-input"
@@ -234,7 +231,7 @@ export function BatchFileUpload({
                 )}
               >
                 <FolderOpen className="h-3.5 w-3.5" />
-                选择文件夹
+                {t('detector.upload.selectFolder')}
               </label>
             </div>
           </div>

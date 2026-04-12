@@ -1,0 +1,109 @@
+"use client";
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
+import { ModeToggle } from "@/components/mode-toggle";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useI18n } from '@/contexts/i18n-context';
+import { useState } from 'react';
+
+export function SiteHeader() {
+  const pathname = usePathname();
+  const { t } = useI18n();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { href: '/', label: t('nav.home'), active: pathname === '/' },
+    { href: '/tools/nsfw-detector', label: t('nav.image'), active: pathname.startsWith('/tools') },
+    { href: '#text', label: t('nav.text'), active: false },
+    { href: '#video', label: t('nav.video'), active: false },
+    { href: '#audio', label: t('nav.audio'), active: false },
+  ];
+
+  return (
+    <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Image
+              src="/logo.svg"
+              alt="DC工具集 Logo"
+              width={32}
+              height={32}
+              className="rounded-lg"
+            />
+            <div>
+              <h1 className="text-lg font-semibold text-foreground">
+                {t('common.appName')}
+              </h1>
+              <p className="text-xs text-muted-foreground hidden sm:block">
+                Developer's Creative Suite
+              </p>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  item.active
+                    ? 'bg-accent text-foreground'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right Side Actions */}
+          <div className="flex items-center gap-2">
+            <ModeToggle />
+            <LanguageSwitcher />
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden py-4 border-t border-border">
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                    item.active
+                      ? 'bg-accent text-foreground'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+}

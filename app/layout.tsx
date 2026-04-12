@@ -6,32 +6,32 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'SafeView - AI 内容安全检测工具',
-  description: '基于 TensorFlow.js 的本地化 NSFW 内容检测工具，保护隐私，快速高效，支持图片和视频检测',
-  keywords: ['AI', 'NSFW', '内容检测', 'TensorFlow.js', '隐私保护', '图片检测', '视频检测', '深度学习'],
-  authors: [{ name: 'SafeView Team', url: 'https://github.com/willasas/safeview' }],
-  creator: 'SafeView Team',
-  publisher: 'SafeView',
+  title: 'DC工具集 - 开发者创意工具箱',
+  description: '一站式 AI 驱动的内容处理工具平台，隐私优先，高效便捷',
+  keywords: ['AI', '内容检测', '图片压缩', '文本分析', '视频处理', '开发者工具', '隐私保护', '创意工具'],
+  authors: [{ name: 'DC Tools Team', url: 'https://github.com/willasas/safeview' }],
+  creator: 'DC Tools Team',
+  publisher: 'DC Tools',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://safeview.vercel.app'),
+  metadataBase: new URL('https://dctools.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'SafeView - AI 内容安全检测工具',
-    description: '基于 TensorFlow.js 的本地化 NSFW 内容检测工具，保护隐私，快速高效',
-    url: 'https://safeview.vercel.app',
-    siteName: 'SafeView',
+    title: 'DC工具集 - 开发者创意工具箱',
+    description: '一站式 AI 驱动的内容处理工具平台，隐私优先，高效便捷',
+    url: 'https://dctools.vercel.app',
+    siteName: 'DC Tools',
     images: [
       {
         url: 'https://raw.githubusercontent.com/willasas/safeview/main/screenshots/usage-video.gif',
         width: 1920,
         height: 1080,
-        alt: 'SafeView 使用演示',
+        alt: 'DC工具集 使用演示',
       },
     ],
     locale: 'zh_CN',
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SafeView - AI 内容安全检测工具',
-    description: '基于 TensorFlow.js 的本地化 NSFW 内容检测工具',
+    title: 'DC工具集 - 开发者创意工具箱',
+    description: '一站式 AI 驱动的内容处理工具平台',
     images: ['https://raw.githubusercontent.com/willasas/safeview/main/screenshots/usage-video.gif'],
     creator: '@willasas',
   },
@@ -74,15 +74,35 @@ export const metadata: Metadata = {
   },
 }
 
+import { ThemeProvider } from '@/components/theme-provider'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { I18nProvider } from '@/contexts/i18n-context'
+import { CookieConsent } from '@/components/cookie-consent'
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN">
-      <body className="font-sans antialiased">
-        {children}
+    <html lang="zh-CN" suppressHydrationWarning>
+      <body className="font-sans antialiased min-h-screen flex flex-col">
+        <I18nProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <SiteHeader />
+            <div className="flex-1">
+              {children}
+            </div>
+            <SiteFooter />
+            <CookieConsent />
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   )

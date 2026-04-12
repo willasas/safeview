@@ -1,135 +1,119 @@
-import { Shield, Lock, Zap, Smartphone, FolderOpen } from "lucide-react";
-import { EnhancedNSFWDetector } from "@/components/enhanced-nsfw-detector";
+"use client";
+
+import Link from 'next/link';
+import { Shield, Image, FileText, Video } from 'lucide-react';
+import { useI18n } from '@/contexts/i18n-context';
 
 export default function Home() {
+  const { t } = useI18n();
+
+  const tools = [
+    {
+      title: t('home.safeViewCard.title'),
+      description: t('home.safeViewCard.description'),
+      tag: t('home.safeViewCard.tag'),
+      href: '/tools/nsfw-detector',
+      icon: Shield,
+      color: 'from-red-500/10 to-orange-500/10',
+      iconColor: 'text-red-600 dark:text-red-400',
+      tagColor: 'bg-red-500/20 text-red-700 dark:text-red-300',
+    },
+    {
+      title: t('home.imageCompressCard.title'),
+      description: t('home.imageCompressCard.description'),
+      tag: t('home.imageCompressCard.tag'),
+      href: '/tools/image-compress',
+      icon: Image,
+      color: 'from-blue-500/10 to-cyan-500/10',
+      iconColor: 'text-blue-600 dark:text-blue-400',
+      tagColor: 'bg-blue-500/20 text-blue-700 dark:text-blue-300',
+    },
+    {
+      title: t('home.textAnalysisCard.title'),
+      description: t('home.textAnalysisCard.description'),
+      tag: t('home.textAnalysisCard.tag'),
+      href: '/tools/text-analysis',
+      icon: FileText,
+      color: 'from-green-500/10 to-emerald-500/10',
+      iconColor: 'text-green-600 dark:text-green-400',
+      tagColor: 'bg-green-500/20 text-green-700 dark:text-green-300',
+    },
+    {
+      title: t('home.videoProcessCard.title'),
+      description: t('home.videoProcessCard.description'),
+      tag: t('home.videoProcessCard.tag'),
+      href: '#',
+      icon: Video,
+      color: 'from-purple-500/10 to-pink-500/10',
+      iconColor: 'text-purple-600 dark:text-purple-400',
+      tagColor: 'bg-purple-500/20 text-purple-700 dark:text-purple-300',
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <Shield className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h1 className="text-lg font-semibold text-foreground">
-                  SafeView
-                </h1>
-                <p className="text-xs text-muted-foreground hidden sm:block">
-                  AI 内容安全检测
-                </p>
-              </div>
-            </div>
-
-            <a
-              href="https://github.com/infinitered/nsfwjs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Powered by NSFW.js
-            </a>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
-      <section className="py-12 md:py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+      <section className="py-16 md:py-24 px-4">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
             <Shield className="h-4 w-4" />
-            基于 TensorFlow.js 的本地 AI 检测 v2.0
+            {t('common.tagline')}
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight text-balance">
-            智能识别
-            <span className="text-primary">不安全内容</span>
-          </h2>
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight text-balance">
+            {t('home.title')}
+          </h1>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            支持批量检测图片和视频，AI 将自动分析内容是否包含不适宜展示的元素。
-            所有处理均在浏览器本地完成，保护您的隐私。新增多模型支持、自定义阈值、报告导出等功能。
+            {t('home.description')}
           </p>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="px-4 pb-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-            <FeatureCard
-              icon={<Lock className="h-5 w-5" />}
-              title="隐私优先"
-              description="所有文件仅在本地处理，不会上传到任何服务器"
-            />
-            <FeatureCard
-              icon={<FolderOpen className="h-5 w-5" />}
-              title="批量检测"
-              description="支持文件夹批量检测，自动整理不安全内容"
-            />
-            <FeatureCard
-              icon={<Zap className="h-5 w-5" />}
-              title="多模型支持"
-              description="提供多种 AI 模型和自定义阈值设置"
-            />
+      {/* Tools Grid */}
+      <section className="px-4 pb-16">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-foreground mb-8">
+            {t('home.latestTools')}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tools.map((tool, index) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  key={index}
+                  href={tool.href}
+                  prefetch={true}
+                  className={`group relative rounded-xl border border-border bg-gradient-to-br ${tool.color} p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                >
+                  {/* Tag Badge */}
+                  <div className="absolute top-4 right-4">
+                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${tool.tagColor}`}>
+                      {tool.tag}
+                    </span>
+                  </div>
+
+                  {/* Icon */}
+                  <div className="mb-4">
+                    <div className={`inline-flex p-3 rounded-lg bg-background/50 ${tool.iconColor}`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {tool.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {tool.description}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
-
-      {/* Main Detector */}
-      <section className="px-4 pb-16 md:pb-24">
-        <EnhancedNSFWDetector />
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border py-8 px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm text-muted-foreground">
-            本工具使用{" "}
-            <a
-              href="https://github.com/infinitered/nsfwjs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              NSFW.js
-            </a>{" "}
-            和{" "}
-            <a
-              href="https://www.tensorflow.org/js"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              TensorFlow.js
-            </a>{" "}
-            构建，仅供参考，不保证 100% 准确
-          </p>
-        </div>
-      </footer>
     </main>
-  );
-}
-
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-xl border border-border bg-card p-4 md:p-5 space-y-3">
-      <div className="p-2 rounded-lg bg-primary/10 w-fit text-primary">
-        {icon}
-      </div>
-      <div>
-        <h3 className="font-medium text-foreground">{title}</h3>
-        <p className="text-sm text-muted-foreground mt-1">{description}</p>
-      </div>
-    </div>
   );
 }

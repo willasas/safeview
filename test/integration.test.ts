@@ -44,6 +44,7 @@ export function runIntegrationTests() {
         { className: 'Hentai', probability: 0.005 },
       ],
       isNSFW: false,
+      nsfwScore: 0.02,
       highestCategory: 'Neutral',
       highestProbability: 0.95,
       processingTime: 150,
@@ -80,6 +81,7 @@ export function runIntegrationTests() {
           { className: 'Hentai', probability: 0.01 },
         ],
         isNSFW: false,
+        nsfwScore: 0.05,
         highestProbability: 0.90,
         highestCategory: 'Neutral',
         processingTime: 120,
@@ -95,6 +97,7 @@ export function runIntegrationTests() {
           { className: 'Hentai', probability: 0.01 },
         ],
         isNSFW: false,
+        nsfwScore: 0.07,
         highestProbability: 0.85,
         highestCategory: 'Neutral',
         processingTime: 125,
@@ -110,6 +113,7 @@ export function runIntegrationTests() {
           { className: 'Drawing', probability: 0.02 },
         ],
         isNSFW: true,
+        nsfwScore: 0.93,
         highestProbability: 0.75,
         highestCategory: 'Porn',
         processingTime: 130,
@@ -143,6 +147,7 @@ export function runIntegrationTests() {
         { className: 'Neutral', probability: 0.95 },
       ],
       isNSFW: false,
+      nsfwScore: 0.05,
       highestCategory: 'Neutral',
       highestProbability: 0.95,
       processingTime: 150,
@@ -323,6 +328,10 @@ export function runAllTests() {
 }
 
 // 如果在 Node.js 环境中直接运行此文件
-if (typeof window === 'undefined' && typeof process !== 'undefined' && require.main === module) {
-  runAllTests();
+if (typeof window === 'undefined' && typeof process !== 'undefined') {
+  // 只有当该文件是主模块时才运行
+  const isMainModule = require.main === module;
+  if (isMainModule) {
+    runAllTests();
+  }
 }

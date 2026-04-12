@@ -1,15 +1,16 @@
 {
-  "name": "safeview",
+  "name": "dctools",
   "version": "1.0.0",
-  "description": "AI-powered local NSFW content detection tool built with TensorFlow.js",
+  "description": "Developer's Creative Suite - AI-powered content processing tools platform",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "echo 请在浏览器中运行测试：1. pnpm dev 2. 打开 http://localhost:3000 3. F12 打开控制台 4. 输入: runAllTests()",
-    "test:docs": "echo \"查看测试文档: test/README.md 或 test/QUICKSTART.md\""
+    "test:unit": "npx tsx test/integration.test.ts",
+    "test:e2e": "playwright test",
+    "test": "npm run test:unit && npm run test:e2e"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -45,14 +46,17 @@
     "@tensorflow/tfjs-backend-webgl": "^4.22.0",
     "@vercel/analytics": "1.6.1",
     "autoprefixer": "^10.4.20",
+    "browser-image-compression": "^2.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.1.1",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.6.0",
     "input-otp": "1.4.2",
+    "jszip": "^3.10.1",
     "lucide-react": "^0.564.0",
     "next": "16.2.0",
+    "next-intl": "^4.9.1",
     "next-themes": "^0.4.6",
     "nsfwjs": "^4.3.0",
     "react": "19.2.4",
@@ -61,12 +65,14 @@
     "react-hook-form": "^7.54.1",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
+    "sharp": "^0.34.5",
     "sonner": "^1.7.1",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4.2.0",
     "@types/node": "^22",
     "@types/react": "^19.2.14",

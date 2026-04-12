@@ -1,0 +1,375 @@
+{
+  "common": {
+    "appName": "DC Tools",
+    "tagline": "Developer's Creative Suite",
+    "version": "All-in-one AI-powered content processing platform"
+  },
+  "home": {
+    "title": "DC Tools - Developer's Creative Suite",
+    "description": "All-in-one AI-powered content processing platform, privacy-first and efficient",
+    "latestTools": "Latest Tools",
+    "safeViewCard": {
+      "title": "NSFW Content Detection",
+      "description": "AI-powered detection of inappropriate content in images and videos, supports batch processing and custom thresholds",
+      "tag": "Image"
+    },
+    "imageCompressCard": {
+      "title": "Image Compression",
+      "description": "Intelligently compress image size while maintaining high quality output, supports batch processing",
+      "tag": "Image"
+    },
+    "textAnalysisCard": {
+      "title": "Text Analysis",
+      "description": "AI-driven text content analysis and classification, supports sentiment analysis and keyword extraction",
+      "tag": "Text"
+    },
+    "videoProcessCard": {
+      "title": "Video Processing",
+      "description": "Intelligent video content analysis and processing tools, supports format conversion and editing",
+      "tag": "Video"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "image": "Image",
+    "text": "Text",
+    "video": "Video",
+    "audio": "Audio"
+  },
+  "imageCompress": {
+    "page": {
+      "heroTitle": "Smart Image Compression",
+      "heroSubtitle": "Intelligent compression based on browser technology, privacy-first and efficient",
+      "featureBatch": "Batch Compression",
+      "featureBatchDesc": "Supports batch processing of multiple images simultaneously",
+      "featureQuality": "Quality Control",
+      "featureQualityDesc": "Adjustable compression quality to balance size and clarity",
+      "featureFormat": "Format Conversion",
+      "featureFormatDesc": "Supports JPG, PNG, WebP and other format conversions"
+    },
+    "upload": {
+      "dragDrop": "Drag and drop images here, or click to upload",
+      "clickOrDrag": "Click to select images or drag here",
+      "formats": "Supports JPG, PNG, WebP, GIF and more",
+      "maxSize": "Maximum 20MB per file",
+      "invalidFiles": "Please select valid image files"
+    },
+    "settings": {
+      "title": "Compression Settings",
+      "quality": "Compression Quality",
+      "qualityDesc": "Lower value means higher compression rate and smaller file size",
+      "format": "Output Format",
+      "formatDesc": "Select target image format",
+      "resize": "Size Adjustment",
+      "resizeDesc": "Scale image dimensions proportionally",
+      "maxWidth": "Max Width",
+      "maxHeight": "Max Height",
+      "maintainRatio": "Maintain Aspect Ratio"
+    },
+    "actions": {
+      "compressing": "Compressing",
+      "startCompress": "Start Compression",
+      "downloadAll": "Download All",
+      "downloadZip": "Download ZIP",
+      "reset": "Reselect",
+      "singleDownload": "Download"
+    },
+    "result": {
+      "summary": "Compression Summary",
+      "originalSize": "Original Size",
+      "compressedSize": "Compressed Size",
+      "compressionRatio": "Compression Ratio",
+      "processingTime": "Processing Time",
+      "seconds": "seconds",
+      "savedSpace": "Space Saved"
+    },
+    "info": {
+      "usageTitle": "Usage Instructions",
+      "usage1": "Supports JPG, PNG, WebP, GIF image formats",
+      "usage2": "All processing is done locally in your browser, files are never uploaded to servers",
+      "usage3": "Adjust quality settings to balance file size and image clarity",
+      "usage4": "Batch compression supports downloading all files as a ZIP package"
+    }
+  },
+  "textAnalysis": {
+    "page": {
+      "heroTitle": "Smart Text Analysis",
+      "heroSubtitle": "AI-driven text content analysis, supports sentiment analysis and keyword extraction",
+      "featureSentiment": "Sentiment Analysis",
+      "featureSentimentDesc": "Automatically identify text emotional倾向 (positive/negative/neutral)",
+      "featureKeywords": "Keyword Extraction",
+      "featureKeywordsDesc": "Extract high-frequency keywords and important terms",
+      "featureClassification": "Text Classification",
+      "featureClassificationDesc": "Intelligent text categorization and topic identification"
+    },
+    "input": {
+      "placeholder": "Please enter text to analyze...",
+      "pasteText": "Paste Text",
+      "uploadFile": "Upload File",
+      "supportedFormats": "Supports TXT format",
+      "maxLength": "Maximum 10000 characters",
+      "dragDrop": "Drag and drop text files here, or click to upload"
+    },
+    "analysis": {
+      "sentiment": "Sentiment Analysis",
+      "positive": "Positive",
+      "negative": "Negative",
+      "neutral": "Neutral",
+      "keywords": "Keywords",
+      "categories": "Categories",
+      "wordCount": "Word Count",
+      "readingTime": "Reading Time",
+      "charCount": "Character Count",
+      "paragraphCount": "Paragraph Count",
+      "sentenceCount": "Sentence Count",
+      "minutes": "minutes"
+    },
+    "actions": {
+      "analyze": "Start Analysis",
+      "analyzing": "Analyzing",
+      "reset": "Clear",
+      "exportReport": "Export Report"
+    },
+    "result": {
+      "summary": "Analysis Summary",
+      "sentimentScore": "Sentiment Score",
+      "topKeywords": "Top Keywords",
+      "textCategories": "Text Categories",
+      "statistics": "Text Statistics"
+    },
+    "info": {
+      "usageTitle": "Usage Instructions",
+      "usage1": "Supports direct text input or TXT file upload",
+      "usage2": "All processing is done locally in your browser, ensuring data privacy",
+      "usage3": "Supports sentiment analysis, keyword extraction and text classification",
+      "usage4": "Can export analysis results as JSON format report"
+    }
+  },
+  "detector": {
+    "title": "Intelligent Unsafe Content Detection",
+    "subtitle": "Supports batch detection of images and videos. AI automatically analyzes content for inappropriate elements. All processing is done locally in your browser to protect your privacy. Now with multi-model support, custom thresholds, and report export.",
+    "privacyFirst": "Privacy First",
+    "privacyDesc": "All files are processed locally, never uploaded to any server",
+    "batchDetection": "Batch Detection",
+    "batchDesc": "Supports folder batch detection with automatic unsafe content organization",
+    "multiModel": "Multi-Model Support",
+    "multiModelDesc": "Multiple AI models with customizable threshold settings",
+    "techStack": "Built with NSFW.js and TensorFlow.js. For reference only, not guaranteed to be 100% accurate",
+    "page": {
+      "heroTitle": "NSFW Content Detection",
+      "heroSubtitle": "Local AI detection based on TensorFlow.js, privacy-first and efficient",
+      "featurePrivacy": "Privacy First",
+      "featurePrivacyDesc": "All processing is done locally in the browser, data is never uploaded to servers",
+      "featureBatch": "Batch Detection",
+      "featureBatchDesc": "Supports detecting multiple files simultaneously with automatic result classification",
+      "featureMultiModel": "Multi-Model Support",
+      "featureMultiModelDesc": "Supports multiple AI models with customizable detection thresholds"
+    },
+    "settings": {
+      "title": "Detection Settings",
+      "aiModel": "AI Model",
+      "selectModel": "Select Detection Model",
+      "models": {
+        "default": {
+          "name": "MobileNetV2 (Default)",
+          "description": "Lightweight model, fast speed, suitable for most scenarios (Recommended)"
+        },
+        "inception_v3": {
+          "name": "InceptionV3 (High Accuracy)",
+          "description": "Higher accuracy (93%), but larger model size and slower loading"
+        },
+        "strict": {
+          "name": "Strict Mode",
+          "description": "Lower thresholds, more sensitive detection of unsafe content, reduce false negatives"
+        },
+        "relaxed": {
+          "name": "Relaxed Mode",
+          "description": "Higher thresholds, reduce false positives, suitable for relaxed scenarios"
+        }
+      },
+      "thresholds": "Detection Thresholds",
+      "porn": "Porn",
+      "hentai": "Hentai",
+      "sexy": "Sexy",
+      "combinedThreshold": "Combined Threshold",
+      "combinedThresholdDesc": "Porn×0.7 + Hentai×0.3 exceeds this threshold will be marked as unsafe",
+      "videoDetection": "Video Detection",
+      "sampleFrames": "Sample Frames",
+      "sampleFramesDesc": "More frames increase accuracy but take longer",
+      "advancedOptions": "Advanced Options",
+      "hentaiOnly": "Detect Hentai Only",
+      "hentaiOnlyDesc": "Ignore other categories, focus only on Hentai content",
+      "batchMode": "Batch Detection Mode",
+      "batchModeDesc": "Support batch detection for folders"
+    },
+    "info": {
+      "categories": "Detection results include 5 categories: Neutral, Drawing, Sexy, Hentai, Porn",
+      "usageTitle": "Usage Instructions",
+      "usage1": "Supports JPG, PNG, GIF, WebP images and MP4, WebM videos",
+      "usage2": "All processing is done locally in your browser, files are never uploaded to servers",
+      "usage3": "Videos are automatically sampled with multiple frames analyzed to find potential violations",
+      "usage5": "AI deep learning models will be automatically enabled in production environment",
+      "batchUsage1": "Supports batch detection of images and videos",
+      "batchUsage2": "Can select folders for batch detection",
+      "batchUsage3": "Supports multiple AI models and custom thresholds",
+      "batchUsage4": "Can export JSON format detection reports",
+      "batchUsage5": "All processing is done locally in your browser, files are never uploaded to servers"
+    },
+    "upload": {
+      "dragDrop": "Drag and drop files here, or click to upload",
+      "clickOrDrag": "Click to select files or drag here",
+      "supportText": "Supports batch detection of images and videos",
+      "formats": "Supports JPG, PNG, GIF, WebP, MP4, WebM and more",
+      "selectFolder": "Select Folder",
+      "invalidFiles": "Please select valid image or video files",
+      "noValidFiles": "No valid image or video files found in the folder"
+    },
+    "model": {
+      "loading": "Loading AI Model...",
+      "progress": "Loading Progress",
+      "firstLoad": "First load requires downloading ~10MB model files, please wait",
+      "basicMode": "Basic Detection Mode",
+      "basicModeDesc": "Currently using color-based analysis. AI models will be automatically enabled in production for more accurate detection."
+    },
+    "tabs": {
+      "batch": "Batch Detection",
+      "single": "Single File Detection"
+    },
+    "actions": {
+      "detecting": "Detecting",
+      "startBatch": "Start Batch Detection",
+      "files": "file(s)",
+      "reset": "Reselect",
+      "progress": "Analyzing video frames",
+      "analyzingImage": "Analyzing image",
+      "exportReport": "Export Report",
+      "moveToNsfwFolder": "Move to nsfw folder",
+      "hideSettings": "Hide Settings",
+      "showSettings": "Show Settings",
+      "noUnsafeFound": "No unsafe content detected",
+      "moveSuccess": "Successfully moved {count} unsafe files to nsfw folder",
+      "moveFailed": "Failed to move files, please ensure your browser supports File System Access API"
+    },
+    "result": {
+      "summary": "Batch Detection Summary",
+      "failed": "Detection Failed",
+      "checking": "Checking...",
+      "noUnsafe": "No unsafe content detected",
+      "reportTitle": "DC Tools Batch Detection Report",
+      "totalFiles": "Total Files",
+      "safeFiles": "Safe Files",
+      "unsafeFiles": "Unsafe Files",
+      "processingTime": "Total Processing Time",
+      "seconds": "seconds",
+      "singleFile": {
+        "unsafeDetected": "Unsafe Content Detected",
+        "safeContent": "Safe Content",
+        "imageSafe": "No unsafe content detected in this image",
+        "imageUnsafe": "This image may contain inappropriate content",
+        "videoUnsafe": "Detected {nsfw}/{total} frames with unsafe content",
+        "videoSafe": "No obvious unsafe content detected in this video",
+        "colorLegend": "Green indicates safe, red indicates unsafe content. Hover for details."
+      },
+      "categories": {
+        "drawing": "Drawing",
+        "drawingDesc": "Hand-drawn or animated content",
+        "hentai": "Hentai",
+        "hentaiDesc": "Anime-style adult content",
+        "neutral": "Neutral",
+        "neutralDesc": "Normal safe content",
+        "porn": "Porn",
+        "pornDesc": "Adult pornographic content",
+        "sexy": "Sexy",
+        "sexyDesc": "Sexual but not pornographic content"
+      },
+      "verdict": {
+        "title": "Verdict",
+        "unsafe": "Unsafe",
+        "safe": "Safe"
+      },
+      "singleFile": {
+        "detectionResult": "Detection Result",
+        "totalFrames": "Total Frames",
+        "nsfwFrames": "Unsafe Frames"
+      }
+    }
+  },
+  "footer": {
+    "disclaimer": "This tool is strictly prohibited for illegal use. We assume no responsibility for any losses or damages caused by using this tool.",
+    "aboutUs": "About Us",
+    "about": {
+      "description": "DC Tools provides AI-powered content safety detection tools, committed to providing secure, private, and efficient services."
+    },
+    "legalTitle": "Legal",
+    "copyright": "© {year} DC Tools. All rights reserved.",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "rights": "Copyright",
+    "reserved": "All rights reserved",
+    "beian": "License",
+    "contactUs": "Contact Us",
+    "email": "Email",
+    "github": "GitHub",
+    "allRightsReserved": "All rights reserved",
+    "social": {
+      "title": "Social Media",
+      "qq": "QQ Group",
+      "wechat": "WeChat"
+    }
+  },
+  "legal": {
+    "about": {
+      "title": "About Us",
+      "content": "DC Tools is an AI-powered content safety detection tool, committed to providing secure, private, and efficient content moderation services.",
+      "mission": "Our Mission",
+      "missionContent": "DC Tools is dedicated to leveraging advanced AI technology to provide users with efficient and accurate content safety detection services. We believe that through technological innovation, we can make the internet environment safer and healthier.",
+      "advantages": "Core Advantages",
+      "advantage1": "Local Processing: All detection is done locally in your browser, protecting user privacy",
+      "advantage2": "AI-Powered: Based on deep learning models with high accuracy",
+      "advantage3": "Fast & Efficient: Supports batch processing to save time",
+      "advantage4": "Free to Use: All basic features are completely free"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "content": "Users must comply with all applicable laws and regulations when using this tool. Illegal use is strictly prohibited.",
+      "section1": "1. Terms of Use",
+      "term1": "This tool is for legal purposes only",
+      "term2": "Users must not use this tool for any illegal activities",
+      "term3": "Users are solely responsible for all consequences arising from using this tool",
+      "section2": "2. Disclaimer",
+      "disclaimer": "The detection tools provided on this site are for reference only and do not guarantee 100% accuracy. Users should not rely entirely on detection results to make important decisions. We assume no responsibility for any direct or indirect losses caused by using this tool.",
+      "section3": "3. Intellectual Property",
+      "ip": "All content on this website (including but not limited to text, images, and code) is protected by copyright. No entity or individual may copy, reproduce, or use without written authorization."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "content": "We are committed to protecting user privacy. All detection is performed locally, and we never upload or store any user data.",
+      "section1": "1. Data Collection",
+      "dataCollection": "We do not collect, store, or transmit any user files or personal information. All detection is completed locally in your browser.",
+      "section2": "2. Cookie Usage",
+      "cookies": "We only use essential cookies to ensure the website functions properly, such as language preferences and theme settings. These cookies are not used to track user behavior.",
+      "section3": "3. Data Security",
+      "security": "Since all processing is done locally, your data never leaves your device, ensuring the highest level of security.",
+      "section4": "4. Third-Party Services",
+      "thirdParty": "We do not share user data with any third parties. The website may use CDN to load resources, but no user files are transmitted."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "content": "We use essential cookies to ensure the website functions properly. We do not use cookies to track user behavior.",
+      "section1": "1. What are Cookies",
+      "whatAreCookies": "Cookies are small text files stored on your device to remember your preferences and settings.",
+      "section2": "2. Cookies We Use",
+      "cookieTypes": "We only use essential functional cookies, including: language preferences, theme settings, and session management.",
+      "section3": "3. How to Manage Cookies",
+      "manageCookies": "You can disable or delete cookies at any time through your browser settings. Please note that this may affect certain website functionality.",
+      "section4": "4. Third-Party Cookies",
+      "thirdPartyCookies": "We do not use any third-party tracking cookies or advertising cookies.",
+      "consent": {
+        "accept": "Accept Essential Cookies",
+        "decline": "Decline",
+        "learnMore": "Learn More"
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import { Shield, Loader2, Scan, RefreshCw, Info } from "lucide-react";
 import { useNSFW, type NSFWResult, type VideoFrameResult } from "@/hooks/use-nsfw";
+import { useI18n } from '@/contexts/i18n-context';
 import { FileUpload } from "./file-upload";
 import { DetectionResult } from "./detection-result";
 import { ProgressBar } from "./progress-bar";
@@ -10,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function NSFWDetector() {
+  const { t } = useI18n();
   const {
     isModelLoading,
     isModelReady,
@@ -131,11 +133,11 @@ export function NSFWDetector() {
         <div className="rounded-xl border border-border bg-card p-6">
           <div className="flex items-center gap-3 mb-4">
             <Loader2 className="h-5 w-5 animate-spin text-primary" />
-            <span className="text-sm font-medium">正在加载 AI 模型...</span>
+            <span className="text-sm font-medium">{t('detector.model.loading')}</span>
           </div>
-          <ProgressBar value={loadProgress} label="加载进度" size="md" />
+          <ProgressBar value={loadProgress} label={t('detector.model.progress')} size="md" />
           <p className="text-xs text-muted-foreground mt-3">
-            首次加载需要下载约 10MB 的模型文件，请耐心等待
+            {t('detector.model.firstLoad')}
           </p>
         </div>
       )}
@@ -145,9 +147,9 @@ export function NSFWDetector() {
           <div className="flex items-start gap-3">
             <Info className="h-5 w-5 text-amber-500 flex shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-amber-500">基础检测模式</p>
+              <p className="text-sm font-medium text-amber-500">{t('detector.model.basicMode')}</p>
               <p className="text-xs text-muted-foreground mt-1">
-                当前使用基于颜色分析的检测方式。部署到生产环境后，将自动启用 AI 模型进行更精准的检测。
+                {t('detector.model.basicModeDesc')}
               </p>
             </div>
           </div>
@@ -172,12 +174,12 @@ export function NSFWDetector() {
             {isDetecting ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
-                检测中...
+                {t('detector.actions.detecting')}...
               </>
             ) : (
               <>
                 <Scan className="h-5 w-5" />
-                开始检测
+                {t('detector.actions.startBatch')}
               </>
             )}
           </Button>
@@ -189,7 +191,7 @@ export function NSFWDetector() {
             className="h-12 gap-2"
           >
             <RefreshCw className="h-4 w-4" />
-            重新选择
+            {t('detector.actions.reset')}
           </Button>
         </div>
       )}
@@ -201,8 +203,8 @@ export function NSFWDetector() {
             value={detectProgress}
             label={
               fileType === "video"
-                ? `正在分析视频帧 (${Math.ceil((detectProgress / 100) * 10)}/10)`
-                : "正在分析图片"
+                ? `${t('detector.actions.progress')} (${Math.ceil((detectProgress / 100) * 10)}/10)`
+                : t('detector.actions.analyzingImage')
             }
             size="md"
           />
@@ -230,13 +232,13 @@ export function NSFWDetector() {
         <div className="flex items-start gap-3">
           <Info className="h-5 w-5 text-primary flex shrink-0 mt-0.5" />
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p className="font-medium text-foreground">使用说明</p>
+            <p className="font-medium text-foreground">{t('detector.info.usageTitle')}</p>
             <ul className="list-disc list-inside space-y-1">
-              <li>支持检测 JPG、PNG、GIF、WebP 图片和 MP4、WebM 视频</li>
-              <li>所有处理均在本地浏览器完成，文件不会上传到服务器</li>
-              <li>视频会自动采样多帧进行分析，找出最可能的违规内容</li>
-              <li>检测结果包含 5 个分类：正常、绘画、性感、动漫成人、色情</li>
-              <li>部署到生产环境后会自动启用 AI 深度学习模型</li>
+              <li>{t('detector.info.usage1')}</li>
+              <li>{t('detector.info.usage2')}</li>
+              <li>{t('detector.info.usage3')}</li>
+              <li>{t('detector.info.categories')}</li>
+              <li>{t('detector.info.usage5')}</li>
             </ul>
           </div>
         </div>

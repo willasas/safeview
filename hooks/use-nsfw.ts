@@ -31,6 +31,22 @@ if (typeof window !== "undefined" && !(globalThis as any).__safeview_logs_patche
   };
   console.log = filterNSFWLogs;
   console.info = filterNSFWLogs;
+
+  // 过滤浏览器扩展错误（不影响功能）
+  const originalError = console.error;
+  console.error = (...args: any[]) => {
+    const msg = String(args[0] || "");
+    // 过滤浏览器扩展错误和 React/Next.js 开发警告
+    if (
+      msg.includes("message port closed") ||
+      msg.includes("runtime.lastError") ||
+      msg.includes("Encountered a script tag") ||
+      msg.includes("next-themes")
+    ) {
+      return;
+    }
+    originalError.apply(console, args);
+  };
 }
 
 // NSFW.js 的分类结果类型
@@ -45,6 +61,7 @@ export interface ModelConfig {
   name: string;
   description: string;
   url: string;
+  size?: number; // 图像尺寸，InceptionV3 为 299，MobileNetV2 为 224
   thresholds: Thresholds;
 }
 
@@ -125,35 +142,47 @@ const DEFAULT_SETTINGS: UserSettings = {
   enableBatchMode: false,
 };
 
-// 可用的模型列表
+// 可用的模型列表（基于 nsfwjs 4.x 官方提供的三种内置模型）
 export const AVAILABLE_MODELS: ModelConfig[] = [
   {
     id: "default",
-    name: "NSFWJS MobileNetV2 (默认)",
-    description: "轻量级模型，速度快，适合大多数场景",
-    url: "", // 使用 nsfwjs.load() 默认模型
+    name: "MobileNetV2 (默认)",
+    description: "轻量级模型，速度快，适合大多数场景 (推荐)",
+    url: "",
+    size: 224,
     thresholds: { Porn: 0.3, Hentai: 0.3, Sexy: 0.5, combinedThreshold: 0.15 },
   },
   {
-    id: "resnet",
-    name: "NSFWJS ResNet50 (高精度)",
-    description: "更高精度，但速度较慢",
-    url: "https://nsfw-model-1.s3.us-west-2.amazonaws.com/nsfw_model/3/model.json",
+    id: "inception_v3",
+    name: "InceptionV3 (高精度)",
+    description: "准确度更高（93%），但模型较大，加载较慢",
+    url: "",
+    size: 299,
     thresholds: { Porn: 0.25, Hentai: 0.25, Sexy: 0.45, combinedThreshold: 0.12 },
   },
   {
     id: "strict",
-    name: "严格模式 (低阈值)",
-    description: "降低阈值，更敏感地检测不安全内容",
+    name: "严格模式",
+    description: "降低阈值，更敏感地检测不安全内容，减少漏报",
     url: "",
+    size: 224,
     thresholds: { Porn: 0.15, Hentai: 0.15, Sexy: 0.3, combinedThreshold: 0.08 },
   },
   {
     id: "relaxed",
-    name: "宽松模式 (高阈值)",
-    description: "提高阈值，减少误报",
+    name: "宽松模式",
+    description: "提高阈值，减少误报，适合宽松场景",
     url: "",
+    size: 224,
     thresholds: { Porn: 0.5, Hentai: 0.5, Sexy: 0.7, combinedThreshold: 0.25 },
+  },
+  {
+    id: "hentai-focused",
+    name: "动漫成人专注模式",
+    description: "针对动漫成人内容优化，降低 Hentai 检测阈值",
+    url: "",
+    size: 224,
+    thresholds: { Porn: 0.3, Hentai: 0.15, Sexy: 0.5, combinedThreshold: 0.1 },
   },
 ];
 
@@ -252,12 +281,24 @@ export function useNSFW(initialSettings?: Partial<UserSettings>) {
       const modelConfig = AVAILABLE_MODELS.find(m => m.id === targetModelId) || AVAILABLE_MODELS[0];
 
       // 加载模型
-      if (modelConfig.url) {
-        // 加载自定义模型 URL
-        const model = await nsfwjs.load(modelConfig.url);
-        modelRef.current = model;
-      } else {
-        // 使用默认模型
+      try {
+        if (modelConfig.url) {
+          // 加载自定义模型 URL
+          const options = modelConfig.size ? { size: modelConfig.size } : undefined;
+          const model = await nsfwjs.load(modelConfig.url, options);
+          modelRef.current = model;
+        } else if (modelConfig.id === "inception_v3") {
+          // 加载内置 InceptionV3 模型
+          const model = await nsfwjs.load("InceptionV3", { size: 299 });
+          modelRef.current = model;
+        } else {
+          // 使用默认 MobileNetV2 模型
+          const model = await nsfwjs.load();
+          modelRef.current = model;
+        }
+      } catch (externalModelError) {
+        // 外部模型加载失败时，回退到默认模型
+        console.warn(`Failed to load external model "${modelConfig.name}", falling back to default model.`);
         const model = await nsfwjs.load();
         modelRef.current = model;
       }
