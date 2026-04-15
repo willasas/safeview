@@ -3,14 +3,14 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 // 使用 display: 'swap' 和 preload: false 避免构建时网络请求
-const geist = Geist({ 
+const geist = Geist({
   subsets: ["latin"],
   display: 'swap',
   preload: false,
   variable: '--font-geist-sans',
 });
 
-const geistMono = Geist_Mono({ 
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: 'swap',
   preload: false,
