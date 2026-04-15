@@ -2696,7 +2696,7 @@ export const NAV_DATA: NavItem[] = [
     description: "全球最大的图标库，数百万个图标，PNG、SVG格式都有。",
     url: "https://www.flaticon.com",
     icon: "👻",
-    tags: ["图标库", "免费资源", "图标库"],
+    tags: ["图标库", "免费资源"],
     stats: { views: 0, likes: 0 },
   },
   {
