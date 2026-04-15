@@ -2933,6 +2933,15 @@ export const NAV_DATA: NavItem[] = [
     tags: ["AI模型", "在线工具"],
     stats: { views: 0, likes: 0 },
   },
+  {
+    id: "323",
+    name: "Netlify",
+    description: "Netlify 是一个流行的静态网站托管服务，提供快速、可靠的网站托管和部署解决方案。",
+    url: "https://app.netlify.com/",
+    icon: "💻",
+    tags: ["静态网站托管", "在线工具"],
+    stats: { views: 0, likes: 0 },
+  },
 ];
 
 // 获取所有唯一标签
