@@ -60,7 +60,7 @@ export function CookieConsent() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 onClick={handleAccept}
-                size="sm"
+                size="default"
                 className="flex-1 sm:flex-none"
               >
                 {t('legal.cookies.consent.accept')}
@@ -68,14 +68,14 @@ export function CookieConsent() {
               <Button
                 onClick={handleDecline}
                 variant="outline"
-                size="sm"
+                size="default"
                 className="flex-1 sm:flex-none"
               >
                 {t('legal.cookies.consent.decline')}
               </Button>
               <Button
                 variant="ghost"
-                size="sm"
+                size="default"
                 asChild
                 className="flex-1 sm:flex-none"
               >

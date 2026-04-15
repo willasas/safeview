@@ -438,23 +438,23 @@ export default function SiteNavPage() {
       {/* 工具栏 */}
       <section className="px-4 pb-4">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             {/* 左侧：统计和视图切换 */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               <button
                 onClick={() => setShowStats(!showStats)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-colors text-sm whitespace-nowrap"
               >
                 <BarChart3 className="h-4 w-4" />
-                <span className="text-sm">{stats.total} 个网站</span>
+                <span>{stats.total} 个网站</span>
               </button>
 
               <button
                 onClick={handleCheckAll}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-colors text-sm whitespace-nowrap"
               >
                 <Globe className="h-4 w-4" />
-                <span className="text-sm">检测全部</span>
+                <span>检测全部</span>
               </button>
 
               {/* 视图切换 */}
@@ -482,7 +482,7 @@ export default function SiteNavPage() {
               {/* 编辑模式 */}
               <button
                 onClick={() => setIsEditing(!isEditing)}
-                className={`px-4 py-2 rounded-lg border transition-colors ${
+                className={`px-3 py-2 rounded-lg border transition-colors text-sm whitespace-nowrap ${
                   isEditing
                     ? "bg-primary text-primary-foreground border-primary"
                     : "border-border bg-card hover:bg-accent"

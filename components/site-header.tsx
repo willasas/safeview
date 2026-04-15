@@ -90,16 +90,16 @@ export function SiteHeader() {
             <LanguageSwitcher />
 
             {/* Back to Top Button */}
-            <button
-              onClick={scrollToTop}
-              className={`p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300 ${
-                showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-              }`}
-              aria-label="返回顶部"
-              title="返回顶部"
-            >
-              <ChevronUp className="h-5 w-5" />
-            </button>
+            {showBackToTop && (
+              <button
+                onClick={scrollToTop}
+                className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
+                aria-label="返回顶部"
+                title="返回顶部"
+              >
+                <ChevronUp className="h-5 w-5" />
+              </button>
+            )}
 
             {/* Mobile Menu Button */}
             <button
