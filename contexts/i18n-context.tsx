@@ -1,3 +1,24 @@
+/**
+ * 国际化 (i18n) Context Provider
+ *
+ * 提供全局多语言支持，包括：
+ * - 语言切换（中文/英文）
+ * - 翻译文本获取
+ * - 语言偏好持久化（Cookie）
+ *
+ * @example
+ * ```tsx
+ * 在组件中使用
+ * const { locale, setLocale, t } = useI18n();
+ *
+ * 切换语言
+ * setLocale('en');
+ *
+ * 获取翻译
+ * const title = t('home.title');
+ * ```
+ */
+
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -13,8 +34,8 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 // 导入翻译文件
-import zhMessages from '@/messages/zh.json';
-import enMessages from '@/messages/en.json';
+import zhMessages from '@/i18n/zh.json';
+import enMessages from '@/i18n/en.json';
 
 const messages: Record<Locale, any> = {
   zh: zhMessages,
@@ -38,7 +59,6 @@ function getNestedValue(obj: any, path: string): string {
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('zh');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // 从 cookie 中读取语言设置
@@ -46,7 +66,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     if (match && (match[1] === 'zh' || match[1] === 'en')) {
       setLocaleState(match[1] as Locale);
     }
-    setMounted(true);
   }, []);
 
   const setLocale = (newLocale: Locale) => {
@@ -56,14 +75,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: string): string => {
-    if (!mounted) return key;
     return getNestedValue(messages[locale], key);
   };
-
-  // 避免服务端和客户端渲染不一致
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t }}>

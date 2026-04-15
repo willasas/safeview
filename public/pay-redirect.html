@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收款码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .qrcode {
+            margin: 20px auto;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .qrcode img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+        .hint {
+            font-size: 13px;
+            color: #999;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div class="subtitle">正在识别支付方式...</div>
+        </div>
+        <div id="content" style="display: none;">
+            <div class="logo" id="logo">💰</div>
+            <div class="title" id="title">请选择支付方式</div>
+            <div class="subtitle" id="subtitle">长按识别二维码进行支付</div>
+            <div class="qrcode">
+                <img id="qrcode-img" src="" alt="收款码">
+            </div>
+            <div class="hint" id="hint"></div>
+        </div>
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+        // 获取 URL 参数
+        function getURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            const alipayEncoded = params.get('a');
+            const wechatEncoded = params.get('w');
+
+            // 解码base64
+            let alipay = null;
+            let wechat = null;
+
+            try {
+                if (alipayEncoded) {
+                    alipay = decodeURIComponent(escape(atob(alipayEncoded)));
+                }
+                if (wechatEncoded) {
+                    wechat = decodeURIComponent(escape(atob(wechatEncoded)));
+                }
+            } catch (e) {
+                console.error('解码失败:', e);
+            }
+
+            return { alipay, wechat };
+        }
+
+        // 检测用户代理 - 核心判断逻辑
+        function detectPlatform() {
+            const ua = navigator.userAgent.toLowerCase();
+
+            // 支付宝APP扫码
+            if (ua.includes('alipay') || ua.includes('alipays')) {
+                return 'alipay';
+            }
+            // 微信扫码
+            if (ua.includes('micromessenger')) {
+                return 'wechat';
+            }
+            // QQ扫码
+            if (ua.includes('qq/')) {
+                return 'qq';
+            }
+            // 其他浏览器
+            return 'browser';
+        }
+
+        // 显示错误
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = message;
+        }
+
+        // 简易 QR Code 生成器
+        function generateQRCode(text, size) {
+            size = size || 200;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+
+            // 使用外部 QRCode 库
+            if (typeof QRCode === 'undefined') {
+                return Promise.reject(new Error('QRCode 库未加载'));
+            }
+
+            const qrcode = new QRCode(canvas, {
+                text: text,
+                width: size,
+                height: size,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            return new Promise(function(resolve) {
+                setTimeout(function() {
+                    const dataUrl = canvas.toDataURL('image/png');
+                    resolve(dataUrl);
+                }, 200);
+            });
+        }
+
+        // 主逻辑
+        function main() {
+            const params = getURLParams();
+
+            console.log('解析的URL参数:', params);
+            console.log('用户UA:', navigator.userAgent);
+
+            if (!params.alipay && !params.wechat) {
+                showError('参数错误：缺少支付链接');
+                return;
+            }
+
+            const platform = detectPlatform();
+            console.log('检测到平台:', platform);
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            let targetUrl = '';
+            let platformName = '';
+            let logoEmoji = '';
+            let bgColor = '';
+            let autoRedirect = false;
+            let needQRCode = false;
+
+            if (platform === 'alipay' && params.alipay) {
+                // 支付宝扫码，直接跳转
+                targetUrl = params.alipay;
+                platformName = '支付宝';
+                logoEmoji = '💙';
+                bgColor = '#1677FF';
+                autoRedirect = true;
+                console.log('支付宝扫码，自动跳转到:', targetUrl);
+            } else if (platform === 'wechat' && params.wechat) {
+                // 微信扫码，显示二维码让用户长按识别
+                targetUrl = params.wechat;
+                platformName = '微信';
+                logoEmoji = '💚';
+                bgColor = '#07C160';
+                needQRCode = true;
+                console.log('微信扫码，显示二维码供长按识别');
+            } else if (platform === 'qq' && params.wechat) {
+                // QQ扫码，默认用微信支付
+                targetUrl = params.wechat;
+                platformName = '微信';
+                logoEmoji = '💚';
+                bgColor = '#07C160';
+                needQRCode = true;
+                console.log('QQ扫码，显示微信收款码');
+            } else {
+                // 浏览器扫码，默认显示微信支付
+                targetUrl = params.wechat || params.alipay;
+                platformName = params.wechat ? '微信' : '支付宝';
+                logoEmoji = params.wechat ? '💚' : '💙';
+                bgColor = params.wechat ? '#07C160' : '#1677FF';
+                needQRCode = true;
+                console.log('浏览器扫码，显示', platformName, '收款码');
+            }
+
+            // 更新页面内容
+            document.getElementById('logo').textContent = logoEmoji;
+            document.getElementById('logo').style.background = bgColor + '20';
+            document.getElementById('title').textContent = platformName + '收款';
+            document.getElementById('subtitle').textContent =
+                autoRedirect ? '正在跳转到' + platformName + '...' : '长按识别二维码进行支付';
+            document.getElementById('hint').textContent =
+                autoRedirect
+                    ? '如果未自动跳转，请检查' + platformName + '设置'
+                    : '请使用' + platformName + '扫码支付';
+
+            // 加载 QRCode 库并生成二维码（如果需要）
+            if (needQRCode && targetUrl) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js';
+                script.onload = function() {
+                    generateQRCode(targetUrl, 200)
+                        .then(function(dataUrl) {
+                            document.getElementById('qrcode-img').src = dataUrl;
+                        })
+                        .catch(function(err) {
+                            console.error('QRCode 生成失败:', err);
+                            showError('二维码生成失败，请检查网络连接后刷新页面');
+                        });
+                };
+                script.onerror = function() {
+                    showError('二维码生成失败，请检查网络连接后刷新页面');
+                };
+                document.head.appendChild(script);
+            }
+
+            // 如果是支付宝，尝试自动跳转
+            if (autoRedirect && targetUrl) {
+                setTimeout(function() {
+                    console.log('执行自动跳转');
+                    window.location.href = targetUrl;
+                }, 800);
+            }
+        }
+
+        // 页面加载完成后执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', main);
+        } else {
+            main();
+        }
+    </script>
+</body>
+</html>

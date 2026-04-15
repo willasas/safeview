@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Shield, Image, FileText, Video } from 'lucide-react';
+import { Shield, Image, FileText, Video, CreditCard, QrCode, Wifi, Scan, Barcode } from 'lucide-react';
 import { useI18n } from '@/contexts/i18n-context';
 
 export default function Home() {
@@ -47,6 +47,56 @@ export default function Home() {
       color: 'from-purple-500/10 to-pink-500/10',
       iconColor: 'text-purple-600 dark:text-purple-400',
       tagColor: 'bg-purple-500/20 text-purple-700 dark:text-purple-300',
+    },
+    {
+      title: t('home.paymentMergeQRCard.title'),
+      description: t('home.paymentMergeQRCard.description'),
+      tag: t('home.paymentMergeQRCard.tag'),
+      href: '/tools/payment-merge-qr',
+      icon: CreditCard,
+      color: 'from-emerald-500/10 to-teal-500/10',
+      iconColor: 'text-emerald-600 dark:text-emerald-400',
+      tagColor: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300',
+    },
+    {
+      title: t('home.onlineQRCard.title'),
+      description: t('home.onlineQRCard.description'),
+      tag: t('home.onlineQRCard.tag'),
+      href: '/tools/online-qr-generator',
+      icon: QrCode,
+      color: 'from-indigo-500/10 to-purple-500/10',
+      iconColor: 'text-indigo-600 dark:text-indigo-400',
+      tagColor: 'bg-indigo-500/20 text-indigo-700 dark:text-indigo-300',
+    },
+    {
+      title: t('home.wifiQRCard.title'),
+      description: t('home.wifiQRCard.description'),
+      tag: t('home.wifiQRCard.tag'),
+      href: '/tools/wifi-qr-generator',
+      icon: Wifi,
+      color: 'from-cyan-500/10 to-blue-500/10',
+      iconColor: 'text-cyan-600 dark:text-cyan-400',
+      tagColor: 'bg-cyan-500/20 text-cyan-700 dark:text-cyan-300',
+    },
+    {
+      title: t('home.qrDecoderCard.title'),
+      description: t('home.qrDecoderCard.description'),
+      tag: t('home.qrDecoderCard.tag'),
+      href: '/tools/qr-decoder',
+      icon: Scan,
+      color: 'from-pink-500/10 to-rose-500/10',
+      iconColor: 'text-pink-600 dark:text-pink-400',
+      tagColor: 'bg-pink-500/20 text-pink-700 dark:text-pink-300',
+    },
+    {
+      title: t('home.barcodeCard.title'),
+      description: t('home.barcodeCard.description'),
+      tag: t('home.barcodeCard.tag'),
+      href: '/tools/barcode-generator',
+      icon: Barcode,
+      color: 'from-amber-500/10 to-orange-500/10',
+      iconColor: 'text-amber-600 dark:text-amber-400',
+      tagColor: 'bg-amber-500/20 text-amber-700 dark:text-amber-300',
     },
   ];
 

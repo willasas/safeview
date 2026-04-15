@@ -12,6 +12,16 @@
     "linecap",
     "linejoin",
     "vercel",
+    "sitesnav",
+    "wechat",
+    "beian",
+    "sitenav",
+    "willasas",
+    "Kimi",
+    "Canva",
+    "DALL",
+    "Liblib",
+    "dctools"
   ],
   "css.lint.unknownAtRules": "ignore"
 }

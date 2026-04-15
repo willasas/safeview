@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useI18n } from '@/contexts/i18n-context';
@@ -16,7 +16,8 @@ export function SiteHeader() {
 
   const navItems = [
     { href: '/', label: t('nav.home'), active: pathname === '/' },
-    { href: '/tools/nsfw-detector', label: t('nav.image'), active: pathname.startsWith('/tools') },
+    { href: '/tools/nsfw-detector', label: t('nav.image'), active: pathname.startsWith('/tools/nsfw-detector') },
+    { href: '/tools/site-nav', label: t('nav.sitesnav'), active: pathname === '/tools/site-nav', icon: <Globe className="h-4 w-4" /> },
     { href: '#text', label: t('nav.text'), active: false },
     { href: '#video', label: t('nav.video'), active: false },
     { href: '#audio', label: t('nav.audio'), active: false },
@@ -51,12 +52,13 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5 ${
                   item.active
                     ? 'bg-accent text-foreground'
                     : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
                 }`}
               >
+                {'icon' in item && item.icon}
                 {item.label}
               </Link>
             ))}
@@ -91,12 +93,13 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
                     item.active
                       ? 'bg-accent text-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
                   }`}
                 >
+                  {'icon' in item && item.icon}
                   {item.label}
                 </Link>
               ))}

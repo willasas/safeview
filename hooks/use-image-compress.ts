@@ -1,3 +1,29 @@
+/**
+ * 图片压缩 Hook
+ *
+ * 使用 browser-image-compression 库进行图片压缩，支持单张和批量压缩。
+ * 提供质量、格式、尺寸等自定义设置，并支持导出为 ZIP 文件。
+ *
+ * @returns 图片压缩相关的状态和方法
+ *
+ * @example
+ * ```typescript
+ * const {
+ *   compressImages,
+ *   results,
+ *   isCompressing,
+ *   downloadAsZip
+ * } = useImageCompress();
+ *
+ * 压缩图片
+ * await compressImages(files, {
+ *   quality: 80,
+ *   format: 'webp',
+ *   resize: { maxWidth: 1920, maxHeight: 1080 }
+ * });
+ * ```
+ */
+
 import { useState, useCallback } from "react";
 import imageCompression from "browser-image-compression";
 import JSZip from "jszip";

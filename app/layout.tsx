@@ -2,8 +2,20 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+// 使用 display: 'swap' 和 preload: false 避免构建时网络请求
+const geist = Geist({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: false,
+  variable: '--font-geist-sans',
+});
+
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: false,
+  variable: '--font-geist-mono',
+});
 
 export const metadata: Metadata = {
   title: 'DC工具集 - 开发者创意工具箱',

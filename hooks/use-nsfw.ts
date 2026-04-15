@@ -1,3 +1,29 @@
+/**
+ * NSFW 内容检测 Hook
+ *
+ * 使用 TensorFlow.js 和 NSFW.js 模型进行图像和视频的敏感内容检测。
+ * 支持单文件和批量检测，提供实时进度更新和详细分类结果。
+ *
+ * @returns NSFW 检测相关的状态和方法
+ *
+ * @example
+ * ```typescript
+ * const {
+ *   detectFile,
+ *   detectBatch,
+ *   results,
+ *   isDetecting,
+ *   progress
+ * } = useNSFW();
+ *
+ * 单文件检测
+ * await detectFile(file);
+ *
+ * 批量检测
+ * await detectBatch(files);
+ * ```
+ */
+
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";

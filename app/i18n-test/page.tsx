@@ -98,6 +98,10 @@ export default function I18nTestPage() {
                   <p className="text-xs text-muted-foreground mb-1">nav.audio</p>
                   <p className="font-medium">{t('nav.audio')}</p>
                 </div>
+                <div className="p-3 rounded-lg bg-muted text-center">
+                  <p className="text-xs text-muted-foreground mb-1">nav.sitesnav</p>
+                  <p className="font-medium">{t('nav.sitesnav')}</p>
+                </div>
               </div>
             </div>
 
@@ -147,7 +151,7 @@ export default function I18nTestPage() {
             <CardTitle>使用说明</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-muted-foreground">
-            <p>✅ 所有翻译都来自 messages/zh.json 和 messages/en.json 文件</p>
+            <p>✅ 所有翻译都来自 i18n/zh.json 和 i18n/en.json 文件</p>
             <p>✅ 语言选择会保存到 Cookie，刷新页面后仍然保持</p>
             <p>✅ 点击右上角的语言切换器可以在任何页面切换语言</p>
             <p>✅ 使用 t('key.path') 函数在组件中获取翻译文本</p>

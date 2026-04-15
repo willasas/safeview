@@ -9,6 +9,9 @@ next.user-config.*
 
 # Environment variables
 .env*.local
+.env.production
+.env.development
+!.env.example
 
 # Dependencies
 node_modules/
@@ -26,6 +29,8 @@ dist/
 coverage/
 .nyc_output/
 .playwright-mcp/
+test-results/
+playwright-report/
 
 # IDE
 .vscode/*

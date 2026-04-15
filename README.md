@@ -12,6 +12,8 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.2-38BDF8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
+**快速链接**：[📝 更新日志](docs/CHANGELOG.md) | [🤝 贡献指南](docs/CONTRIBUTING.md) | [📚 项目文档](docs/README.md)
+
 </div>
 
 ---
@@ -51,9 +53,11 @@
 
 ### 🎬 使用演示
 
-![DC工具集 使用演示](./screenshots/usage-video.gif)
+<!-- ![DC工具集 使用演示](./public/screenshots/usage-video.gif) -->
 
 *拖拽上传 → AI 处理 → 查看结果，轻松完成内容分析*
+
+> 💡 **提示**：宣传图片正在重新生成中，敬请期待！
 
 ---
 
@@ -61,13 +65,13 @@
 
 #### 安全内容检测
 
-![安全图片检测](./screenshots/image-detection-sfw.png)
+<!-- ![安全图片检测](./public/screenshots/image-detection-sfw.png) -->
 
 *检测结果：✅ 内容安全 - Neutral 类别概率 95%*
 
 #### 不安全内容检测
 
-![不安全图片检测](./screenshots/image-detection-nsfw.png)
+<!-- ![不安全图片检测](./public/screenshots/image-detection-nsfw.png) -->
 
 *检测结果：⚠️ 检测到不安全内容 - Porn 类别概率 85%*
 
@@ -83,13 +87,13 @@
 
 #### 安全视频检测
 
-![安全视频检测](./screenshots/video-detection-sfw.png)
+<!-- ![安全视频检测](./public/screenshots/video-detection-sfw.png) -->
 
 *检测结果：✅ 视频安全 - 所有帧均为安全内容*
 
 #### 不安全视频检测
 
-![不安全视频检测](./screenshots/video-detection-nsfw.png)
+<!-- ![不安全视频检测](./public/screenshots/video-detection-nsfw.png) -->
 
 *检测结果：⚠️ 检测到不安全内容 - 部分帧包含 NSFW 内容*
 
@@ -104,7 +108,7 @@
 
 ### 📊 详细分析报告
 
-![详细检测报告](./screenshots/detailed-report.jpeg)
+<!-- ![详细检测报告](./public/screenshots/detailed-report.jpeg) -->
 
 提供详细的概率分析和可视化图表，包括：
 - 每个分类的精确概率值
@@ -147,6 +151,35 @@ runAllTests()
 - ✅ 支持**浏览器和 Node.js** 环境
 
 详见 [test/README.md](test/README.md)
+
+## 📚 项目文档
+
+所有技术文档已整理至 `docs/` 文件夹，方便统一管理：
+
+### 📖 核心文档
+- [📝 更新日志](docs/CHANGELOG.md) - 版本更新记录
+- [🤝 贡献指南](docs/CONTRIBUTING.md) - 如何参与项目开发
+- [🧪 测试文档](docs/TESTING.md) - 测试套件使用说明
+
+### 🚀 部署相关
+- [📦 部署指南](docs/DEPLOYMENT_GUIDE.md) - 详细的部署步骤
+- [✅ 部署检查清单](docs/DEPLOYMENT_CHECKLIST.md) - 发布前检查项
+
+### 🌍 国际化
+- [🌐 多语言指南](docs/MULTILINGUAL_GUIDE.md) - 国际化实现说明
+- [⚡ i18n 快速参考](docs/I18N_QUICK_REFERENCE.md) - 快速上手指南
+- [🔄 i18n 升级报告](docs/I18N_UPGRADE_REPORT.md) - 升级过程记录
+- [✅ i18n 完成报告](docs/COMPLETE_I18N_FINAL_REPORT.md) - 最终完成情况
+- [🔧 i18n 修复报告](docs/FINAL_I18N_FIX_REPORT.md) - 问题修复记录
+- [⚙️ i18n 设置修复](docs/FINAL_I18N_SETTINGS_FOOTER_FIX.md) - 设置页修复
+- [🛡️ NSFW i18n 更新](docs/NSFW_I18N_UPDATE.md) - NSFW模块国际化
+- [✅ NSFW i18n 完成](docs/NSFW_I18N_FINAL_COMPLETION.md) - NSFW国际化完成
+
+### 📋 其他文档
+- [📄 法律页面完成](docs/LEGAL_PAGES_COMPLETION.md) - 隐私政策等页面
+- [✨ 项目改进](docs/PROJECT_IMPROVEMENTS.md) - 项目优化记录
+
+---
 
 ## 🛠️ 技术栈
 
@@ -197,6 +230,27 @@ cd safeview
 # 2. 安装依赖
 pnpm install
 
+# 3. 配置环境变量（可选）
+cp .env.example .env.local
+# 编辑 .env.local 文件，填入你的配置
+```
+
+### 环境变量配置
+
+项目使用 `.env.local` 文件管理环境变量：
+
+```bash
+# 复制示例文件
+cp .env.example .env.local
+
+# 编辑配置文件
+nano .env.local  # 或使用你喜欢的编辑器
+```
+
+**可用配置项**：
+- `NEXT_PUBLIC_GA_ID` - Google Analytics Measurement ID（可选）
+
+> 💡 **提示**：`.env.local` 已被 Git 忽略，不会提交到仓库。
 # 3. 启动开发服务器
 pnpm dev
 ```
@@ -253,22 +307,56 @@ DC工具集可以识别以下 5 种内容类型：
 ```
 dctools/
 ├── app/                    # Next.js App Router
+│   ├── api/               # API 路由
+│   ├── tools/             # 工具页面
+│   │   ├── nsfw-detector/    # NSFW 检测器
+│   │   ├── image-compress/   # 图片压缩
+│   │   ├── text-analysis/    # 文本分析
+│   │   ├── payment-merge-qr/ # 多合一收款码
+│   │   ├── online-qr-generator/  # 在线二维码制作
+│   │   ├── wifi-qr-generator/    # WiFi二维码生成
+│   │   ├── qr-decoder/          # 二维码解析
+│   │   └── barcode-generator/   # 条形码生成
 │   ├── globals.css        # 全局样式
 │   ├── layout.tsx         # 根布局
 │   └── page.tsx           # 首页
 ├── components/            # React 组件
-│   ├── ui/               # UI 基础组件
+│   ├── ui/               # UI 基础组件 (shadcn/ui)
 │   ├── nsfw-detector.tsx # 主检测器组件
 │   ├── file-upload.tsx   # 文件上传组件
 │   └── detection-result.tsx # 结果展示组件
+├── contexts/             # React Contexts
+│   └── i18n-context.tsx  # 国际化上下文
 ├── hooks/                # 自定义 Hooks
-│   └── use-nsfw.ts       # AI 检测逻辑
+│   ├── use-nsfw.ts       # AI 检测逻辑
+│   ├── use-image-compress.ts
+│   └── use-text-analysis.ts
 ├── lib/                  # 工具函数
-│   └── utils.ts
+│   ├── utils.ts
+│   └── nav-*.ts          # 网站导航相关
+├── i18n/                   # 国际化翻译文件
+│   ├── zh.json           # 中文
+│   └── en.json           # 英文
 ├── public/               # 静态资源
+│   ├── screenshots/      # 宣传截图（待补充）
 │   ├── logo.svg          # Logo
 │   └── icons...          # 图标文件
-└── ...
+├── docs/                 # 项目文档
+│   ├── CHANGELOG.md      # 更新日志
+│   ├── CONTRIBUTING.md   # 贡献指南
+│   ├── DEPLOYMENT_*.md   # 部署文档
+│   └── ...               # 其他技术文档
+├── test/                 # 测试文件
+├── styles/               # 全局样式
+├── .lingma/              # Lingma AI 配置
+├── .next/                # Next.js 构建输出
+├── package.json          # 项目依赖
+├── next.config.mjs       # Next.js 配置
+├── tsconfig.json         # TypeScript 配置
+├── tailwind.config.*     # Tailwind CSS 配置
+├── README.md             # 项目说明（本文件）
+├── LICENSE               # MIT 许可证
+└── .gitignore            # Git 忽略规则
 ```
 
 ### 核心代码解析
@@ -431,4 +519,19 @@ A: 你可以：
 
 ---
 
-**最后更新时间**：2026年4月12日
+**最后更新时间**：2026年4月15日
+
+---
+
+## 📁 目录结构说明
+
+为保持项目整洁，我们采用了以下文件组织规范：
+
+- **根目录**：仅保留必要的配置文件和 `README.md`、`LICENSE`
+- **docs/**：所有技术文档、指南、报告统一存放
+- **public/**：所有静态资源（图片、图标、HTML文件等）
+- **.history/**：版本历史备份（Git管理）
+- **.next/**：Next.js 构建输出（自动生成）
+- **test/**：测试文件和测试配置
+
+这样的组织结构使项目更加清晰、易于维护和导航。

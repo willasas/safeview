@@ -1,3 +1,28 @@
+/**
+ * 文本分析 Hook
+ *
+ * 提供文本统计分析、情感分析和关键词提取功能。
+ * 支持从文件或直接输入文本进行分析。
+ *
+ * @returns 文本分析相关的状态和方法
+ *
+ * @example
+ * ```typescript
+ * const {
+ *   analyzeText,
+ *   analyzeFile,
+ *   result,
+ *   isAnalyzing
+ * } = useTextAnalysis();
+ *
+ * 分析文本
+ * await analyzeText('这是一段测试文本');
+ *
+ * 分析文件
+ * await analyzeFile(file);
+ * ```
+ */
+
 import { useState, useCallback } from "react";
 
 export interface TextAnalysisResult {
