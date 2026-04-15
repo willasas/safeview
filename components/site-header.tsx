@@ -3,16 +3,36 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ChevronUp } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useI18n } from '@/contexts/i18n-context';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function SiteHeader() {
   const pathname = usePathname();
   const { t } = useI18n();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // 监听滚动事件，控制返回顶部按钮显示/隐藏
+  useEffect(() => {
+    const handleScroll = () => {
+      // 当滚动超过 300px 时显示按钮
+      setShowBackToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 返回顶部函数
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const navItems = [
     { href: '/', label: t('nav.home'), active: pathname === '/' },
@@ -68,6 +88,18 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <ModeToggle />
             <LanguageSwitcher />
+
+            {/* Back to Top Button */}
+            <button
+              onClick={scrollToTop}
+              className={`p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300 ${
+                showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+              }`}
+              aria-label="返回顶部"
+              title="返回顶部"
+            >
+              <ChevronUp className="h-5 w-5" />
+            </button>
 
             {/* Mobile Menu Button */}
             <button
