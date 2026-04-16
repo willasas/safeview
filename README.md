@@ -1,10 +1,8 @@
 # 🛠️ DC工具集 - 开发者创意工具箱
 
-<div align="center">
-
 ![DC Tools Logo](./public/logo.svg)
 
-**一站式 AI 驱动的内容处理工具平台**
+## 一站式 AI 驱动的内容处理工具平台
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://react.dev/)
@@ -55,11 +53,9 @@
 
 <!-- ![DC工具集 使用演示](./public/screenshots/usage-video.gif) -->
 
-*拖拽上传 → AI 处理 → 查看结果，轻松完成内容分析*
+拖拽上传 → AI 处理 → 查看结果，轻松完成内容分析
 
 > 💡 **提示**：宣传图片正在重新生成中，敬请期待！
-
----
 
 ### 🛡️ NSFW 内容检测
 
@@ -67,15 +63,16 @@
 
 <!-- ![安全图片检测](./public/screenshots/image-detection-sfw.png) -->
 
-*检测结果：✅ 内容安全 - Neutral 类别概率 95%*
+检测结果：✅ 内容安全 - Neutral 类别概率 95%
 
 #### 不安全内容检测
 
 <!-- ![不安全图片检测](./public/screenshots/image-detection-nsfw.png) -->
 
-*检测结果：⚠️ 检测到不安全内容 - Porn 类别概率 85%*
+检测结果：⚠️ 检测到不安全内容 - Porn 类别概率 85%
 
 **检测结果包含：**
+
 - 🛡️ 安全/不安全状态标识
 - 📊 5 种分类的概率分布（Neutral、Drawing、Sexy、Porn、Hentai）
 - ⏱️ 处理时间统计
@@ -89,15 +86,16 @@
 
 <!-- ![安全视频检测](./public/screenshots/video-detection-sfw.png) -->
 
-*检测结果：✅ 视频安全 - 所有帧均为安全内容*
+检测结果：✅ 视频安全 - 所有帧均为安全内容
 
 #### 不安全视频检测
 
 <!-- ![不安全视频检测](./public/screenshots/video-detection-nsfw.png) -->
 
-*检测结果：⚠️ 检测到不安全内容 - 部分帧包含 NSFW 内容*
+检测结果：⚠️ 检测到不安全内容 - 部分帧包含 NSFW 内容
 
 **视频检测特点：**
+
 - 🎬 自动采样关键帧（最多 10 帧）
 - 📈 实时显示检测进度
 - 🔴 红色标记包含不安全内容的帧
@@ -111,6 +109,7 @@
 <!-- ![详细检测报告](./public/screenshots/detailed-report.jpeg) -->
 
 提供详细的概率分析和可视化图表，包括：
+
 - 每个分类的精确概率值
 - 彩色进度条直观展示
 - 性能指标统计
@@ -156,16 +155,19 @@ runAllTests()
 
 所有技术文档已整理至 `docs/` 文件夹，方便统一管理：
 
-### 📖 核心文档
+### 核心文档
+
 - [📝 更新日志](docs/CHANGELOG.md) - 版本更新记录
 - [🤝 贡献指南](docs/CONTRIBUTING.md) - 如何参与项目开发
 - [🧪 测试文档](docs/TESTING.md) - 测试套件使用说明
 
-### 🚀 部署相关
+### 部署相关
+
 - [📦 部署指南](docs/DEPLOYMENT_GUIDE.md) - 详细的部署步骤
 - [✅ 部署检查清单](docs/DEPLOYMENT_CHECKLIST.md) - 发布前检查项
 
-### 🌍 国际化
+### 国际化
+
 - [🌐 多语言指南](docs/MULTILINGUAL_GUIDE.md) - 国际化实现说明
 - [⚡ i18n 快速参考](docs/I18N_QUICK_REFERENCE.md) - 快速上手指南
 - [🔄 i18n 升级报告](docs/I18N_UPGRADE_REPORT.md) - 升级过程记录
@@ -175,7 +177,8 @@ runAllTests()
 - [🛡️ NSFW i18n 更新](docs/NSFW_I18N_UPDATE.md) - NSFW模块国际化
 - [✅ NSFW i18n 完成](docs/NSFW_I18N_FINAL_COMPLETION.md) - NSFW国际化完成
 
-### 📋 其他文档
+### 其他文档
+
 - [📄 法律页面完成](docs/LEGAL_PAGES_COMPLETION.md) - 隐私政策等页面
 - [✨ 项目改进](docs/PROJECT_IMPROVEMENTS.md) - 项目优化记录
 
@@ -194,7 +197,7 @@ runAllTests()
 
 ### 架构优势
 
-```
+```text
 ┌─────────────────────────────────────┐
 │         用户浏览器 (Client)          │
 │  ┌───────────────────────────────┐  │
@@ -247,10 +250,15 @@ cp .env.example .env.local
 nano .env.local  # 或使用你喜欢的编辑器
 ```
 
-**可用配置项**：
+**可用配置项：**
+
 - `NEXT_PUBLIC_GA_ID` - Google Analytics Measurement ID（可选）
 
 > 💡 **提示**：`.env.local` 已被 Git 忽略，不会提交到仓库。
+
+### 启动开发服务器
+
+```bash
 # 3. 启动开发服务器
 pnpm dev
 ```
@@ -275,17 +283,18 @@ pnpm start
 
 DC工具集可以识别以下 5 种内容类型：
 
-| 分类 | 说明 | 安全等级 |
-|------|------|----------|
-| 🟢 **Neutral** | 正常内容 | ✅ 安全 |
-| 🔵 **Drawing** | 绘画/卡通 | ✅ 安全 |
-| 🟠 **Sexy** | 性感内容 | ⚠️ 注意 |
-| 🔴 **Hentai** | 动漫成人内容 | ❌ 不安全 |
-| 🔴 **Porn** | 色情内容 | ❌ 不安全 |
+| 分类     | 说明       | 安全等级   |
+| -------- | ---------- | ---------- |
+| 🟢 **Neutral** | 正常内容   | ✅ 安全    |
+| 🔵 **Drawing** | 绘画/卡通  | ✅ 安全    |
+| 🟠 **Sexy**    | 性感内容   | ⚠️ 注意    |
+| 🔴 **Hentai**  | 动漫成人内容 | ❌ 不安全  |
+| 🔴 **Porn**    | 色情内容   | ❌ 不安全  |
 
 ### 2️⃣ 视频帧分析
 
 对于视频文件，系统会：
+
 1. 自动提取关键帧（根据视频时长，最多 10 帧）
 2. 逐帧进行 AI 检测
 3. 统计不安全帧的比例
@@ -304,7 +313,7 @@ DC工具集可以识别以下 5 种内容类型：
 
 ### 项目结构
 
-```
+```text
 dctools/
 ├── app/                    # Next.js App Router
 │   ├── api/               # API 路由
@@ -385,27 +394,29 @@ await checkVideo(videoElement, frameCount, onProgress);
 
 ---
 
-## 🌟 为什么选择 DC工具集？
+### 为什么选择 DC工具集？
 
-### vs 传统云端工具
+#### vs 传统云端工具
 
-| 特性 | DC工具集 (本地) | 云端 API |
-|------|----------------|----------|
-| 隐私保护 | ✅ 文件不上传 | ❌ 需上传文件 |
-| 响应速度 | ⚡ 毫秒级 | 🐌 受网络影响 |
-| 使用成本 | 💰 免费 | 💸 按次收费 |
-| 离线可用 | ✅ 模型缓存后 | ❌ 需要网络 |
-| 数据安全 | 🔒 完全本地 | ⚠️ 第三方存储 |
+| 特性     | DC工具集 (本地) | 云端 API   |
+| -------- | --------------- | ---------- |
+| 隐私保护 | ✅ 文件不上传    | ❌ 需上传文件 |
+| 响应速度 | ⚡ 毫秒级        | 🐌 受网络影响 |
+| 使用成本 | 💰 免费          | 💸 按次收费  |
+| 离线可用 | ✅ 模型缓存后    | ❌ 需要网络  |
+| 数据安全 | 🔒 完全本地      | ⚠️ 第三方存储 |
 
-### 应用场景对比
+#### 应用场景对比
 
 **适合使用 DC工具集：**
+
 - 对隐私要求高的场景
 - 需要快速批量处理
 - 预算有限的个人/小团队
 - 需要离线工作的环境
 
 **建议使用云端 API：**
+
 - 需要极高的准确率
 - 超大规模并发处理
 - 需要人工审核介入
@@ -496,17 +507,13 @@ A: 你可以：
 
 ---
 
-## ⭐ 支持项目
+## 支持项目
 
 如果你觉得这个项目对你有帮助，请给我们一个 ⭐ Star！你的支持是我们持续改进的动力。
-
-<div align="center">
 
 **Made with ❤️ by DC Tools Team**
 
 [⭐ Star this repo](https://github.com/willasas/safeview) · [🐛 Report Bug](https://github.com/willasas/safeview/issues) · [💡 Request Feature](https://github.com/willasas/safeview/issues)
-
-</div>
 
 ---
 
