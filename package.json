@@ -4,9 +4,9 @@
   "description": "Developer's Creative Suite - AI-powered content processing tools platform",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3303",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3303",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test:unit": "npx tsx test/integration.test.ts",

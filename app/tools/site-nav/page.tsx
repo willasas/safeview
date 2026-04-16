@@ -122,6 +122,9 @@ export default function SiteNavPage() {
     })
   );
 
+  // 防止自动检测重复执行
+  const hasAutoChecked = useRef(false);
+
   // 合并默认数据和自定义数据
   const allItems = useMemo(() => {
     const customIds = new Set(customItems.map((item) => item.id));
@@ -378,13 +381,16 @@ export default function SiteNavPage() {
     reader.readAsText(file);
   };
 
-  // 自动检测
+  // 自动检测（只在首次加载且需要时执行）
   useEffect(() => {
+    if (hasAutoChecked.current) return; // 防止重复执行
+    
     const lastCheck = getLastCheckTime();
     if (shouldAutoCheck(lastCheck) && filteredData.length > 0) {
+      hasAutoChecked.current = true;
       handleCheckAll();
     }
-  }, []);
+  }, [filteredData.length]);
 
   // 使用 IntersectionObserver 实现滚动自动加载
   useEffect(() => {

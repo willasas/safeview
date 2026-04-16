@@ -1408,8 +1408,8 @@ export const NAV_DATA: NavItem[] = [
     name: "扩展迷",
     description: "Chrome 插件扩展商店，提供各类浏览器插件和工具推荐",
     url: "https://www.extfans.com/",
-    icon: "_extension",
-    tags: ["在线工具", "开发工具"],
+    icon: "🔌",
+    tags: ["扩展商店", "开发工具"],
     stats: { views: 0, likes: 0 },
   },
   {
@@ -1489,8 +1489,8 @@ export const NAV_DATA: NavItem[] = [
     name: "思维导图工具",
     description: "在线思维导图工具，帮助整理思路和规划项目",
     url: "https://inspiring-golick-3c01b9.netlify.app/",
-    icon: " mind_map",
-    tags: ["AI办公工具", "在线工具"],
+    icon: "🧠",
+    tags: ["思维导图", "在线工具"],
     stats: { views: 0, likes: 0 },
   },
   {
@@ -1693,11 +1693,11 @@ export const NAV_DATA: NavItem[] = [
   },
   {
     id: "185",
-    name: "扩展迷-Chrome插件/扩展,谷歌浏览器插件,谷歌应用商店插件推荐与下载",
-    description: "Chrome 插件扩展商店，提供各类浏览器插件和工具推荐",
-    url: "https://www.extfans.com/",
-    icon: "_extension",
-    tags: ["在线工具", "开发工具"],
+    name: "Dev Sidecar",
+    description: "DevSidecar是开发者必备的辅助工具，让GitHub访问不再是痛点。",
+    url: "https://github.com/docmirror/dev-sidecar",
+    icon: "🛠️",
+    tags: ["辅助工具", "开发工具", "GitHub工具"],
     stats: { views: 0, likes: 0 },
   },
   {
@@ -2080,11 +2080,11 @@ export const NAV_DATA: NavItem[] = [
   },
   {
     id: "228",
-    name: "免费 AI 绘画提示词生成器",
-    description: "AI 绘画提示词生成工具，帮助创作者优化 prompt",
-    url: "https://prompt.krwoo.com/",
+    name: "CheckIsSafe",
+    description: "CheckIsSafe是一个在线工具和网址导航。它提供了一个简单易用的界面，用户可以输入网址并获取该网站的安全检查结果。",
+    url: "https://checkissafe.netlify.app",
     icon: "💡",
-    tags: ["AI图像工具", "AI创作工具"],
+    tags: ["个人网址", "开源工具"],
     stats: { views: 0, likes: 0 },
   },
   {
@@ -2942,6 +2942,204 @@ export const NAV_DATA: NavItem[] = [
     tags: ["静态网站托管", "在线工具"],
     stats: { views: 0, likes: 0 },
   },
+  {
+    id: "324",
+    name: "Yandex",
+    description: "一个流行的搜索引擎",
+    url: "https://yandex.com/",
+    icon: "💻",
+    tags: ["搜索引擎", "在线工具"],
+    stats: { views: 0, likes: 0 },
+  },
+  {
+    id: "325",
+    name: "Remix Icons",
+    description: "3200+ 图标，Apache 2.0 协议，支持 Outline/Solid 风格，类目齐全，棱角风格鲜明。",
+    url: "https://remixicon.com",
+    icon: "😊",
+    tags: ["图标库", "棱角风格", "类目全面"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "326",
+    name: "Tabler Icons",
+    description: "4985 图标，MIT 协议，支持 Outline/Solid 风格，数量大，中性风格。",
+    url: "https://tabler.io/icons",
+    icon: "😊",
+    tags: ["图标库", "数量大", "中性设计"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "327",
+    name: "Phosphor Icons",
+    description: "9072 图标，MIT 协议，支持 Outline/Solid/Duotone 风格，最大图标库，提供 4 种粗细调节。",
+    url: "https://phosphoricons.com",
+    icon: "😊",
+    tags: ["图标库", "最大库", "多风格"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "328",
+    name: "Heroicons",
+    description: "316 图标，MIT 协议，支持 Outline/Solid 风格，Tailwind 出品，圆润饱满。",
+    url: "https://heroicons.com",
+    icon: "😊",
+    tags: ["Tailwind", "圆润风格", "图标库"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "329",
+    name: "Lucide Icons",
+    description: "1668 图标，MIT 协议，Outline 风格，Shadcn/ui 默认图标库，线条轻盈。",
+    url: "https://lucide.dev",
+    icon: "😊",
+    tags: ["Shadcn", "轻盈现代", "图标库"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "330",
+    name: "Ming Cute Icons",
+    description: "3000+ 图标，Apache 2.0 协议，支持 Outline/Solid 风格，类目独特，覆盖范围广。",
+    url: "https://mingcute.com",
+    icon: "😊",
+    tags: ["图标库", "类目独特", "覆盖面广"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "331",
+    name: "Iconoir",
+    description: "1500+ 图标，MIT 协议，Outline 风格，曾被 HBO 使用，设计简洁。",
+    url: "https://iconoir.com",
+    icon: "😊",
+    tags: ["图标库", "简洁", "Outline"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "332",
+    name: "Material Icons",
+    description: "2000+ 图标，Apache 2.0 协议，支持 Outline/Solid 风格，谷歌出品，可高度定制。",
+    url: "https://fonts.google.com/icons",
+    icon: "😊",
+    tags: ["图标库", "可定制", "Material Design"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "333",
+    name: "Glow Icons",
+    description: "442 图标，MIT 协议，支持 Outline/Solid 风格，精选常用图标，开箱即用。",
+    url: "https://glowui.com/icons",
+    icon: "😊",
+    tags: ["图标库", "开箱即用", "轻量"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "334",
+    name: "Kdenlive",
+    description: "专业级非线性视频编辑器，适用于严肃的多轨道剪辑和长片项目。支持无限音视频轨道，拥有强大的效果库和可定制界面。跨平台支持 Windows、macOS 和 Linux。",
+    url: "https://kdenlive.org",
+    icon: "📺",
+    tags: ["专业级", "多轨道剪辑", "跨平台"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "335",
+    name: "OpenShot",
+    description: "极其简单、用户友好的免费开源视频编辑器，无学习曲线，适合绝对初学者。具有拖放功能、关键帧动画和内置效果，对系统资源要求极低。",
+    url: "https://openshot.org",
+    icon: "📺",
+    tags: ["初学者友好", "界面简洁", "轻量级"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "336",
+    name: "Shotcut",
+    description: "在简单性、稳定性和广泛格式支持之间取得最佳平衡。支持海量音视频格式（基于FFmpeg），提供滤镜和效果，可在性能较弱的硬件上运行。",
+    url: "https://shotcut.org",
+    icon: "📺",
+    tags: ["格式支持广", "稳定可靠", "跨平台"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "337",
+    name: "Blender",
+    description: "世界一流的3D创作套件，内置强大的视频序列编辑器（VSE）。适合将视频编辑与3D图形、视觉效果结合的创作者，支持高级合成和绿幕处理。",
+    url: "https://blender.org",
+    icon: "📺",
+    tags: ["3D集成", "视觉效果", "功能强大"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "338",
+    name: "DaVinci Resolve",
+    description: "专业级免费视频编辑器（非开源），提供好莱坞级别的剪辑、色彩校正（行业标准调色）、视觉特效（Fusion）和音频后期（Fairlight）一体化流程。需要高端硬件。",
+    url: "https://www.blackmagicdesign.com/products/davinciresolve",
+    icon: "📺",
+    tags: ["专业级", "调色标杆", "一体化流程"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "339",
+    name: "Flowblade",
+    description: "为Linux设计的轻量级多轨道非线性编辑器，专注快速流畅的剪辑工作流程。界面干净、响应迅速，非常适合快速视频项目。",
+    url: "http://flowblade.sourceforge.net",
+    icon: "📺",
+    tags: ["Linux原生", "快速工作流", "轻量级"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "340",
+    name: "Olive",
+    description: "相对较新的跨平台开源视频编辑器，拥有时尚现代的界面，专注实时播放和响应速度。仍处于早期开发阶段，但展现出巨大潜力。",
+    url: "https://olivevideoeditor.org",
+    icon: "📺",
+    tags: ["现代界面", "响应迅速", "新兴项目"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "341",
+    name: "Avidemux",
+    description: "用于快速剪辑、过滤和编码的轻量级工具，并非非线性编辑器。极其稳定可靠，适合简单快速的视频处理任务，如裁剪片段、添加滤镜或转换格式。",
+    url: "http://avidemux.sourceforge.net",
+    icon: "📺",
+    tags: ["快速剪辑", "轻量级", "格式转换"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "342",
+    name: "Pitivi",
+    description: "为Linux设计的简单直观的非线性编辑器，注重易用性。提供剪切、修整和基本时间线功能，非常适合基础视频项目和初学者。",
+    url: "http://pitivi.org",
+    icon: "📺",
+    tags: ["Linux原生", "初学者友好", "界面直接"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "343",
+    name: "VidCutter",
+    description: "专注于快速无损剪切和拼接视频片段的轻量级工具。具有极简界面，支持硬件加速播放和“SmartCut”功能，适合快速修剪或合并片段。",
+    url: "https://vidcutter.ozmartians.com",
+    icon: "📺",
+    tags: ["无损剪切", "极速拼接", "轻量级"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "344",
+    name: "Natron",
+    description: "强大的基于节点的开源视频合成软件，专注于视觉效果和合成（类似Nuke）。支持2D/2.5D合成、绿幕抠像、动态遮罩和2D跟踪，适合VFX艺术家。",
+    url: "https://natrongithub.github.io",
+    icon: "📺",
+    tags: ["节点合成", "视觉效果", "专业级"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "345",
+    name: "LiVES",
+    description: "独特的开源视频编辑器，结合了实时视频表演（VJing）与非线性编辑。支持使用键盘或MIDI控制器混合片段并应用实时效果，帧和样本精确。",
+    url: "http://lives-video.com",
+    icon: "📺",
+    tags: ["VJ表演", "实时混合", "Linux原生"],
+    stats: { views: 0, likes: 0 }
+  }
 ];
 
 // 获取所有唯一标签
