@@ -27,6 +27,7 @@
 参考截图设计:
 
 ```
+
 ┌─────────────────────────────────────────────────────┐
 │  页面标题: "AI 网站导航"                              │
 │  副标题: "精选 AI 工具导航"                            │
@@ -37,6 +38,7 @@
 ├─────────────────────────────────────────────────────┤
 │  "加载更多" 按钮                                      │
 └─────────────────────────────────────────────────────┘
+
 ```
 
 ### 4. 卡片组件设计
@@ -44,6 +46,7 @@
 创建 `components/nav-card.tsx`:
 
 ```tsx
+
 // 卡片结构 (参考截图)
 <a href={url} target="_blank" rel="noopener noreferrer"
    className="group relative rounded-xl border bg-card 
@@ -78,6 +81,7 @@
     ))}
   </div>
 </a>
+
 ```
 
 ### 5. 页面主组件
@@ -85,6 +89,7 @@
 `app/nav/page.tsx`:
 
 ```tsx
+
 export default function NavPage() {
   const [visibleCount, setVisibleCount] = useState(8);
   
@@ -126,6 +131,7 @@ export default function NavPage() {
     </main>
   );
 }
+
 ```
 
 ### 6. 关键文件清单

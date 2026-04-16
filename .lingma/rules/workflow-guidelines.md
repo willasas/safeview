@@ -6,6 +6,7 @@ trigger: always_on
 ## 1. 新功能开发流程
 
 ### Step 1: 需求确认
+
 在开始编码前，必须明确：
 - [ ] 功能目标是什么？
 - [ ] 目标用户是谁？
@@ -14,6 +15,7 @@ trigger: always_on
 - [ ] 优先级如何（P0/P1/P2）？
 
 ### Step 2: 技术方案设计
+
 - [ ] 创建技术设计文档（specs/ 目录）
 - [ ] 确定技术选型
 - [ ] 设计数据模型
@@ -21,22 +23,28 @@ trigger: always_on
 - [ ] 评估风险和依赖
 
 ### Step 3: 任务分解
+
 将大任务拆分为小任务（每个不超过 4 小时）：
+
 ```markdown
+
 - [ ] Task 1: 搭建基础架构 (2h)
 - [ ] Task 2: 实现核心功能 A (3h)
 - [ ] Task 3: 实现核心功能 B (2h)
 - [ ] Task 4: 编写测试 (2h)
 - [ ] Task 5: 文档和代码审查 (1h)
+
 ```
 
 ### Step 4: 开发实施
+
 - 从 `dev` 分支创建 feature 分支：`git checkout -b feature/xxx`
 - 遵循代码规范
 - 编写单元测试
 - 频繁提交（小而频繁的 commits）
 
 ### Step 5: 测试验证
+
 - [ ] 单元测试通过
 - [ ] 集成测试通过
 - [ ] 手动测试关键流程
@@ -44,12 +52,14 @@ trigger: always_on
 - [ ] 兼容性测试
 
 ### Step 6: Code Review
+
 - 提交 PR 到 dev 分支
 - 至少 1 人 review
 - 解决所有评论
 - CI/CD 全部通过
 
 ### Step 7: 合并部署
+
 - 合并到 dev 分支
 - 部署到 staging 环境验证
 - 合并到 main 分支
@@ -58,6 +68,7 @@ trigger: always_on
 ## 2. Bug 修复流程
 
 ### Step 1: 问题复现
+
 - [ ] 记录 bug 现象
 - [ ] 提供复现步骤
 - [ ] 截图或录屏
@@ -65,23 +76,27 @@ trigger: always_on
 - [ ] 确认影响范围
 
 ### Step 2: 根因分析
+
 - [ ] 定位问题代码位置
 - [ ] 分析为什么会发生
 - [ ] 评估修复方案
 - [ ] 预估修复时间
 
 ### Step 3: 修复实施
+
 - 从 dev 分支创建 bugfix 分支：`git checkout -b bugfix/xxx`
 - 编写失败的测试用例（TDD）
 - 修复代码
 - 确保测试通过
 
 ### Step 4: 回归测试
+
 - [ ] 修复的 bug 不再出现
 - [ ] 没有引入新的 bug
 - [ ] 相关功能正常
 
 ### Step 5: 紧急程度判断
+
 **Hotfix** (立即修复):
 - 生产环境严重故障
 - 安全漏洞
@@ -95,6 +110,7 @@ trigger: always_on
 ## 3. 代码审查 (Code Review) 清单
 
 ### 代码质量
+
 - [ ] 代码清晰易懂
 - [ ] 遵循项目规范
 - [ ] 没有重复代码
@@ -102,35 +118,41 @@ trigger: always_on
 - [ ] 适当的抽象层次
 
 ### 功能性
+
 - [ ] 实现了需求
 - [ ] 边界情况已处理
 - [ ] 错误处理完善
 - [ ] 没有明显的 bug
 
 ### 性能
+
 - [ ] 没有不必要的计算
 - [ ] 避免了内存泄漏
 - [ ] 数据库查询优化
 - [ ] 使用了缓存（如适用）
 
 ### 安全性
+
 - [ ] 输入验证完整
 - [ ] 没有硬编码敏感信息
 - [ ] 防止常见攻击（XSS, SQL注入等）
 - [ ] 权限控制正确
 
 ### 可维护性
+
 - [ ] 代码有适当注释
 - [ ] 变量/函数命名清晰
 - [ ] 复杂度合理
 - [ ] 易于扩展
 
 ### 测试
+
 - [ ] 有相应的测试
 - [ ] 测试覆盖关键逻辑
 - [ ] 测试用例清晰
 
 ### 文档
+
 - [ ] 更新了相关文档
 - [ ] API 变更有说明
 - [ ] 添加了必要的注释
@@ -138,12 +160,14 @@ trigger: always_on
 ## 4. 日常开发习惯
 
 ### 每天早上
+
 1. 查看 Git 状态：`git status`
 2. 拉取最新代码：`git pull origin dev`
 3. 检查待办任务
 4. 更新任务进度
 
 ### 编码时
+
 1. **先思考，后编码**
    - 理解需求
    - 设计方案
@@ -160,6 +184,7 @@ trigger: always_on
    - 统一代码风格
 
 ### 每天结束前
+
 1. 提交当天代码
 2. 更新任务状态
 3. 记录遇到的问题和解决方案
@@ -168,19 +193,27 @@ trigger: always_on
 ## 5. 沟通协作规范
 
 ### Git Commit 消息
+
 ```bash
+
 # ❌ Bad
+
 git commit -m "fix bug"
 git commit -m "update code"
 
 # ✅ Good
+
 git commit -m "fix(nav): 修复网站导航滚动加载重复触发问题"
 git commit -m "feat(auth): 添加 JWT token 刷新机制"
+
 ```
 
 ### PR 描述模板
+
 ```markdown
+
 ## 变更类型
+
 - [ ] 新功能
 - [ ] Bug 修复
 - [ ] 性能优化
@@ -188,29 +221,37 @@ git commit -m "feat(auth): 添加 JWT token 刷新机制"
 - [ ] 文档更新
 
 ## 变更说明
+
 [详细描述这次改动的内容]
 
 ## 相关 Issue
+
 Closes #123
 
 ## 测试
+
 - [ ] 单元测试通过
 - [ ] 手动测试通过
 - [ ] E2E 测试通过
 
 ## 截图（如适用）
+
 [UI 变更的截图]
 
 ## 检查清单
+
 - [ ] 代码遵循项目规范
 - [ ] 添加了必要的测试
 - [ ] 更新了文档
 - [ ] 无 console.log 遗留
 - [ ] 无 TypeScript 错误
+
 ```
 
 ### 问题反馈格式
+
 ```markdown
+
 **问题描述**:
 [清晰描述遇到的问题]
 
@@ -232,23 +273,27 @@ Closes #123
 
 **截图/日志**:
 [相关截图或错误日志]
+
 ```
 
 ## 6. 学习成长
 
 ### 每周回顾
+
 - 本周完成了什么？
 - 遇到了什么困难？如何解决的？
 - 学到了什么新技术/最佳实践？
 - 下周计划做什么？
 
 ### 知识沉淀
+
 - 将解决方案整理成文档
 - 分享技术心得给团队
 - 建立个人知识库
 - 定期复习和更新
 
 ### 技能提升
+
 - 每月学习一项新技术
 - 阅读优秀开源项目源码
 - 参与技术社区讨论
@@ -257,6 +302,7 @@ Closes #123
 ## 7. 应急处理流程
 
 ### 生产环境故障
+
 1. **立即响应**
    - 确认故障范围和影响
    - 通知相关人员
@@ -286,18 +332,21 @@ Closes #123
 ## 8. 工具使用规范
 
 ### IDE 配置
+
 - 安装推荐的扩展
 - 统一代码格式化配置
 - 配置 linting 和 type checking
 - 设置快捷键提高效率
 
 ### 调试技巧
+
 - 善用浏览器 DevTools
 - 使用 React DevTools
 - 合理使用 console.log / debugger
 - 利用断点调试
 
 ### 效率工具
+
 - Git alias 简化常用命令
 - Snippets 快速生成代码模板
 - AI 助手辅助开发
@@ -306,6 +355,7 @@ Closes #123
 ## 9. 分支保护规则
 
 ### main 分支保护
+
 - [ ] 禁止直接 push，必须通过 PR
 - [ ] 至少 1 人 review 后才能合并
 - [ ] CI/CD 必须全部通过
@@ -313,44 +363,57 @@ Closes #123
 - [ ] 禁止删除分支
 
 ### dev 分支保护
+
 - [ ] 禁止直接 push，必须通过 PR
 - [ ] CI/CD 测试必须通过
 - [ ] 允许 force push（谨慎使用）
 
 ### 分支命名规范
+
 ```bash
+
 # 功能分支
+
 feature/user-authentication
 feature/payment-integration
 
 # Bug 修复
+
 bugfix/login-error
 bugfix/memory-leak
 
 # 紧急修复
+
 hotfix/security-patch
 hotfix/critical-bug
 
 # 重构
+
 refactor/api-cleanup
 refactor/component-extraction
 
 # 文档
+
 docs/api-update
 docs/readme-improvement
+
 ```
 
 ## 10. 版本发布流程
 
 ### 版本号规范 (Semantic Versioning)
+
 - **MAJOR.MINOR.PATCH** (e.g., 1.2.3)
 - MAJOR: 不兼容的 API 变更
 - MINOR: 向后兼容的功能新增
 - PATCH: 向后兼容的问题修正
 
 ### 发布 Checklist
+
 ```markdown
+
 ## Pre-release
+
 - [ ] 所有测试通过
 - [ ] 更新 CHANGELOG.md
 - [ ] 更新版本号
@@ -359,6 +422,7 @@ docs/readme-improvement
 - [ ] 安全扫描通过
 
 ## Release
+
 - [ ] 创建 release tag (v1.2.3)
 - [ ] 合并到 main 分支
 - [ ] 部署到 production
@@ -366,28 +430,37 @@ docs/readme-improvement
 - [ ] 监控错误率
 
 ## Post-release
+
 - [ ] 验证核心功能
 - [ ] 检查用户反馈
 - [ ] 更新文档
 - [ ] 通知相关人员
+
 ```
 
 ### 回滚策略
+
 ```bash
+
 # 1. 快速回滚到上一个稳定版本
+
 git revert <commit-hash>
 
 # 2. 或者重置到指定 tag
+
 git reset --hard v1.2.2
 git push --force
 
 # 3. 数据库回滚（如有必要）
+
 # 执行回滚迁移脚本
+
 ```
 
 ## 11. 文档更新流程
 
 ### 何时更新文档
+
 - [ ] 新增功能或 API
 - [ ] 修改现有功能行为
 - [ ] 修复重要 bug
@@ -396,8 +469,11 @@ git push --force
 - [ ] 配置变更
 
 ### 文档更新清单
+
 ```markdown
+
 ## 代码变更时
+
 - [ ] 更新 README.md（如需要）
 - [ ] 更新 API 文档
 - [ ] 更新 CHANGELOG.md
@@ -405,14 +481,17 @@ git push --force
 - [ ] 更新 TypeScript 类型定义
 
 ## 重大变更时
+
 - [ ] 更新技术设计文档
 - [ ] 更新架构图
 - [ ] 更新部署指南
 - [ ] 更新故障排除指南
 - [ ] 通知团队成员
+
 ```
 
 ### 文档质量检查
+
 - [ ] 没有拼写错误
 - [ ] 代码示例可运行
 - [ ] 链接有效
