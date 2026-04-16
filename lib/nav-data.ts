@@ -3139,6 +3139,213 @@ export const NAV_DATA: NavItem[] = [
     icon: "📺",
     tags: ["VJ表演", "实时混合", "Linux原生"],
     stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "346",
+    name: "AI-Scientist-v2",
+    description: "AI自动做科研写论文，从提出想法、文献搜索、实验设计到撰写论文全程自动化。生成论文已通过ICLR 2025同行评审，成果发表在Nature上。采用渐进式Agent树搜索，内置自动评审器。",
+    url: "https://github.com/SakanaAI/AI-Scientist-v2",
+    icon: "🤖",
+    tags: ["AI科研", "自动化", "Nature发表"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "347",
+    name: "VibeVoice",
+    description: "微软开源语音AI模型家族，包含TTS和ASR。TTS单次生成90分钟多说话人音频，ASR单次处理60分钟音频。提供0.5B参数的轻量级实时TTS模型，延迟约300ms。",
+    url: "https://github.com/microsoft/VibeVoice",
+    icon: "🎙️",
+    tags: ["语音合成", "语音识别", "长音频处理"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "348",
+    name: "Hermes Agent",
+    description: "自学习AI Agent框架，具有闭环学习系统，能自动提炼经验为可复用技能。支持200多个模型，可对接飞书、企业微信等十几个平台。",
+    url: "https://github.com/NousResearch/hermes-agent",
+    icon: "🔄",
+    tags: ["AI Agent", "自学习", "多平台对接"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "349",
+    name: "Onyx",
+    description: "开源企业AI搜索工具（原Danswer），打通GitHub、Google Drive、Confluence、Slack等数据源。支持Deep Research、代码沙箱、语音模式，可完全自托管。",
+    url: "https://github.com/onyx-dot-app/onyx",
+    icon: "🔍",
+    tags: ["企业搜索", "RAG", "自托管"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "350",
+    name: "claude-howto",
+    description: "超全Claude Code学习指南，10个教程模块总时长11-13小时。提供生产级模板和可视化教程，可生成EPUB电子书离线查看。",
+    url: "https://github.com/luongnv89/claude-howto",
+    icon: "📘",
+    tags: ["Claude Code", "学习指南", "教程"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "351",
+    name: "oh-my-claudecode",
+    description: "Claude Code的多Agent编排系统，提供19个专业化Agent（架构师、规划师、执行者等）。支持智能模型路由节省30-50% Token，具有Skill学习系统。",
+    url: "https://github.com/Yeachan-Heo/oh-my-claudecode",
+    icon: "🧩",
+    tags: ["Claude Code", "多Agent", "编排系统"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "352",
+    name: "oh-my-codex",
+    description: "OpenAI Codex CLI的多Agent编排系统，提供30个专业Agent和40多个Skill。支持最多20个Worker并行工作，可混合使用Codex和Claude模型。",
+    url: "https://github.com/Yeachan-Heo/oh-my-codex",
+    icon: "⚡",
+    tags: ["OpenAI Codex", "并行处理", "多Agent"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "353",
+    name: "last30days-skill",
+    description: "Claude Code/Codex CLI的Skill，一句话搜遍Reddit、X、YouTube等10个平台最近30天讨论。支持比较模式，自动生成带引用研究报告。",
+    url: "https://github.com/mvanhorn/last30days-skill",
+    icon: "📊",
+    tags: ["信息搜索", "趋势分析", "Claude Skill"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "354",
+    name: "OpenScreen",
+    description: "Screen Studio的开源免费替代品，支持屏幕录制、自动缩放平移、动态模糊、标注添加。一键输出专业Demo视频效果，支持三大操作系统。",
+    url: "https://github.com/siddharthvaddem/openscreen",
+    icon: "🎥",
+    tags: ["屏幕录制", "开源替代", "视频美化"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "355",
+    name: "TaxHacker",
+    description: "AI自动记账算税工具，拍照或上传PDF发票自动提取商品名称、金额、税额等信息。支持170+法定货币和14种加密货币汇率换算，支持本地LLM离线运行。",
+    url: "https://github.com/vas3k/TaxHacker",
+    icon: "💰",
+    tags: ["自动记账", "税务处理", "本地LLM"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "356",
+    name: "TimesFM",
+    description: "Google Research时序预测基础模型，在1000亿时间点预训练。2.5版本仅200M参数，零样本预测准确率高，上下文窗口支持16384时间步。",
+    url: "https://github.com/google-research/timesfm",
+    icon: "📈",
+    tags: ["时序预测", "Google", "轻量级"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "357",
+    name: "LongCat-Flash-Prover",
+    description: "美团开源数学定理证明模型，将证明拆解为形式化翻译、草稿规划、补全证明三步。MiniF2F-Test达97.1%，开源模型SOTA。内置语法分析器检测AI作弊。",
+    url: "https://github.com/meituan-longcat/LongCat-Flash-Prover",
+    icon: "🔢",
+    tags: ["数学定理证明", "美团", "Lean4"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "358",
+    name: "MoneyPrinterTurbo",
+    description: "一键生成短视频工具，给定主题自动生成文案、配音、字幕、背景音乐。支持12+大模型接入，提供Web界面和REST API，Docker一键部署。",
+    url: "https://github.com/harry0703/MoneyPrinterTurbo",
+    icon: "🎬",
+    tags: ["视频生成", "自媒体", "自动化"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "359",
+    name: "Supermemory",
+    description: "AI持久记忆引擎，在三大AI记忆基准测试中全部排名第一。自动从对话提取事实并管理，混合RAG+Memory检索，支持多平台数据同步。",
+    url: "https://github.com/supermemoryai/supermemory",
+    icon: "🧠",
+    tags: ["AI记忆", "RAG", "上下文管理"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "360",
+    name: "Pascal Editor",
+    description: "浏览器内3D建筑设计编辑器，支持墙体、楼板、门窗拖拽操作和多楼层管理。基于React Three Fiber + WebGPU，提供碰撞检测和50步撤销重做。",
+    url: "https://github.com/pascalorg/editor",
+    icon: "🏠",
+    tags: ["3D设计", "建筑设计", "浏览器内"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "361",
+    name: "MoneyPrinterV2",
+    description: "自动化在线赚钱工具集，集成Twitter机器人、YouTube Shorts自动化、联盟营销、本地商家挖掘等功能。用AI生成图像替代库存视频，支持CRON定时执行。",
+    url: "https://github.com/FujiwaraChoki/MoneyPrinterV2",
+    icon: "🖨️",
+    tags: ["自动化", "内容生成", "赚钱工具"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "362",
+    name: "Project N.O.M.A.D.",
+    description: "完全离线的知识教育服务器，打包Ollama本地AI、离线维基百科、Khan Academy课程和离线地图。一键Docker部署，零遥测，适合离网环境。",
+    url: "https://github.com/Crosstalk-Solutions/project-nomad",
+    icon: "🏕️",
+    tags: ["离线教育", "知识服务器", "隐私保护"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "363",
+    name: "moondream",
+    description: "超小视觉语言模型，仅1GB可在笔记本/边缘设备运行图像描述、物体检测、文档阅读。通过pip安装即可使用，平衡了精度和效率。",
+    url: "https://github.com/vikhyat/moondream",
+    icon: "🌙",
+    tags: ["视觉语言模型", "轻量级", "本地运行"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "364",
+    name: "everything-claude-code",
+    description: "Claude Code完整配置合集，包括agents、skills、hooks、commands、rules等生产级配置。Anthropic hackathon获奖项目，可快速搭建AI代码助手。",
+    url: "https://github.com/affaan-m/everything-claude-code",
+    icon: "📦",
+    tags: ["Claude Code", "配置合集", "代码助手"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "365",
+    name: "agent-browser",
+    description: "Vercel Labs出品的无头浏览器自动化CLI，专为AI Agent设计。Rust核心+Node fallback，比Playwright省上下文82%，支持网页自动操作。",
+    url: "https://github.com/vercel-labs/agent-browser",
+    icon: "🕸️",
+    tags: ["浏览器自动化", "AI Agent", "Vercel"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "366",
+    name: "planning-with-files",
+    description: "Claude Code插件，实现文件驱动的持久化Markdown规划（类似Manus工作流）。将计划、进度、知识存磁盘，多轮任务不丢上下文。",
+    url: "https://github.com/OthmanAdi/planning-with-files",
+    icon: "📋",
+    tags: ["Claude Code", "任务规划", "文件持久化"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "367",
+    name: "kreuzberg",
+    description: "Rust核心的多格式文档提取引擎，支持PDF、Office、图像等50+格式，提取文本/元数据/结构化信息。适合本地RAG知识库，零GPU运行。",
+    url: "https://github.com/kreuzberg-dev/kreuzberg",
+    icon: "📄",
+    tags: ["文档提取", "RAG", "Rust"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "368",
+    name: "DeepTutor",
+    description: "港大出品的AI个性化学习助手，支持上传文档构建知识库，多Agent交互教学。不仅给答案还会反问引导，帮助自学和面试刷题。",
+    url: "https://github.com/HKUDS/DeepTutor",
+    icon: "🎓",
+    tags: ["AI教学", "学习助手", "多Agent"],
+    stats: { views: 0, likes: 0 }
   }
 ];
 

@@ -12,13 +12,18 @@ export async function checkWebsiteStatus(url: string): Promise<{
       body: JSON.stringify({ url }),
     });
 
+    if (!response.ok) {
+      // API 请求失败，但不记录详细错误到控制台
+      return { status: 'unknown' };
+    }
+
     const data = await response.json();
     return {
       status: data.status,
       responseTime: data.responseTime,
     };
   } catch (error) {
-    console.error('Failed to check website:', error);
+    // 静默失败，不污染控制台
     return { status: 'unknown' };
   }
 }

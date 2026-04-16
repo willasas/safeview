@@ -381,14 +381,19 @@ export default function SiteNavPage() {
     reader.readAsText(file);
   };
 
-  // 自动检测（只在首次加载且需要时执行）
+  // 自动检测（仅在用户明确需要时执行，避免开发环境的大量错误日志）
   useEffect(() => {
     if (hasAutoChecked.current) return; // 防止重复执行
-    
+
+    // 只在生产环境且距离上次检查超过7天时才自动检测
+    const isProduction = process.env.NODE_ENV === 'production';
     const lastCheck = getLastCheckTime();
-    if (shouldAutoCheck(lastCheck) && filteredData.length > 0) {
+
+    if (isProduction && shouldAutoCheck(lastCheck) && filteredData.length > 0) {
       hasAutoChecked.current = true;
-      handleCheckAll();
+      handleCheckAll().catch((error) => {
+        console.warn('Auto check failed, will retry on next visit:', error);
+      });
     }
   }, [filteredData.length]);
 
