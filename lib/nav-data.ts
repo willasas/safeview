@@ -2404,7 +2404,7 @@ export const NAV_DATA: NavItem[] = [
   },
   {
     id: "264",
-    name: "Color Parrot Compagnion — Color Information",
+    name: "Color Parrot Companion — Color Information",
     description: "颜色信息工具，提供详细的色彩数据和分析",
     url: "https://parrot.color.pizza/",
     icon: "🦜",
