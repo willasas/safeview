@@ -11,15 +11,11 @@
 使用工具识别问题：
 
 ```bash
-
 # Lighthouse CLI
-
 npx lighthouse http://localhost:3000 --view
 
 # Web Vitals 监控
-
 npm install web-vitals
-
 ```
 
 ### Step 2: 定位瓶颈
@@ -49,7 +45,6 @@ const HeavyChart = dynamic(() => import('./HeavyChart'), {
 
 // ✅ Good: 路由级别代码分割（Next.js 自动处理）
 // app/dashboard/page.tsx 会自动分割
-
 ```
 
 ### 2. 图片优化
@@ -71,7 +66,6 @@ import Image from 'next/image';
 
 // ✅ Good: 使用现代格式
 // WebP, AVIF 比 JPEG/PNG 小 25-35%
-
 ```
 
 ### 3. 字体优化
@@ -87,7 +81,6 @@ import Image from 'next/image';
 
 /* ✅ Good: 预加载关键字体 */
 <link rel="preload" href="/fonts/heading.woff2" as="font" crossorigin />
-
 ```
 
 ### 4. 减少重渲染
@@ -115,7 +108,6 @@ const handleClick = useCallback(() => {
 // ✅ Good: 提取样式对象
 const style = { marginTop: 10 };
 <Component style={style} />
-
 ```
 
 ### 5. 虚拟滚动
@@ -146,7 +138,6 @@ function VirtualList({ items }) {
     </div>
   );
 }
-
 ```
 
 ### 6. 懒加载
@@ -173,7 +164,6 @@ useEffect(() => {
   observer.observe(ref.current);
   return () => observer.disconnect();
 }, []);
-
 ```
 
 ## 后端性能优化
@@ -208,7 +198,6 @@ const users = await prisma.user.findMany({
 await prisma.user.createMany({
   data: users,
 });
-
 ```
 
 ### 2. API 缓存策略
@@ -233,7 +222,6 @@ export async function GET() {
     },
   });
 }
-
 ```
 
 ### 3. 连接池管理
@@ -249,7 +237,6 @@ const prisma = new PrismaClient({
     },
   },
 });
-
 ```
 
 ## 性能监控
@@ -281,7 +268,6 @@ export function WebVitals() {
 
   return null;
 }
-
 ```
 
 ### 性能预算
@@ -307,7 +293,6 @@ export function WebVitals() {
     "largest-contentful-paint": ["error", {"maxNumericValue": 2500}]
   }
 }
-
 ```
 
 ## 常见性能问题及解决方案

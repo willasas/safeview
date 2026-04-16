@@ -6,8 +6,7 @@
 
 ## 测试金字塔
 
-```
-
+```text
        /\
       /  \     E2E Tests (10%)
      /----\
@@ -15,7 +14,6 @@
    /--------\
   /          \ Unit Tests (70%)
  /------------\
-
 ```
 
 ## 测试类型
@@ -47,7 +45,6 @@ describe('formatDate', () => {
     expect(formatDate(date, 'MM/DD/YYYY')).toBe('01/15/2024');
   });
 });
-
 ```
 
 ### 2. 集成测试 (Integration Tests)
@@ -100,7 +97,6 @@ describe('LoginForm', () => {
     expect(await screen.findByText(/invalid email/i)).toBeInTheDocument();
   });
 });
-
 ```
 
 ### 3. E2E 测试 (End-to-End Tests)
@@ -162,7 +158,6 @@ test.describe('Login Flow', () => {
     await expect(page).toHaveURL('/dashboard');
   });
 });
-
 ```
 
 ## 测试最佳实践
@@ -184,7 +179,6 @@ it('should calculate total correctly', () => {
   // Assert - 断言
   expect(total).toBe(250);
 });
-
 ```
 
 ### 测试命名规范
@@ -199,7 +193,6 @@ it('test 1', () => {});
 it('should return empty array when no items', () => {});
 it('should throw error when price is negative', () => {});
 it('should apply discount for premium users', () => {});
-
 ```
 
 ### Mock 和 Stub
@@ -245,7 +238,6 @@ it('should debounce input', () => {
 
   expect(onChange).toHaveBeenCalledWith('test');
 });
-
 ```
 
 ### 测试数据工厂
@@ -267,7 +259,6 @@ export function createUser(overrides = {}) {
 // 使用
 const adminUser = createUser({ role: 'admin' });
 const inactiveUser = createUser({ isActive: false });
-
 ```
 
 ## React 组件测试
@@ -295,7 +286,6 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toBeDisabled();
   });
 });
-
 ```
 
 ### 交互测试
@@ -324,7 +314,6 @@ describe('Counter', () => {
     expect(onChange).toHaveBeenCalledWith(1);
   });
 });
-
 ```
 
 ### Hooks 测试
@@ -362,7 +351,6 @@ describe('useCounter', () => {
     expect(result.current.count).toBe(0);
   });
 });
-
 ```
 
 ## API 测试
@@ -416,7 +404,6 @@ test.describe('Users API', () => {
     expect(error.errors).toBeDefined();
   });
 });
-
 ```
 
 ## 测试配置
@@ -424,7 +411,6 @@ test.describe('Users API', () => {
 ### Jest 配置
 
 ```javascript
-
 // jest.config.js
 module.exports = {
   testEnvironment: 'jsdom',
@@ -446,13 +432,11 @@ module.exports = {
     },
   },
 };
-
 ```
 
 ### Playwright 配置
 
 ```typescript
-
 // playwright.config.ts
 import { defineConfig } from '@playwright/test';
 
@@ -487,7 +471,6 @@ export default defineConfig({
     },
   ],
 });
-
 ```
 
 ## CI/CD 集成
@@ -495,7 +478,6 @@ export default defineConfig({
 ### GitHub Actions
 
 ```yaml
-
 # .github/workflows/test.yml
 
 name: Test
@@ -528,13 +510,11 @@ jobs:
 
       - name: Upload coverage
         uses: codecov/codecov-action@v3
-
 ```
 
 ## 测试命令
 
 ```json
-
 {
   "scripts": {
     "test": "jest",
@@ -545,7 +525,6 @@ jobs:
     "test:all": "pnpm test && pnpm test:e2e"
   }
 }
-
 ```
 
 ## 常见测试场景
@@ -564,7 +543,6 @@ it('should fetch data', async () => {
 
   expect(result.current.loading).toBe(false);
 });
-
 ```
 
 ### 错误处理
@@ -580,7 +558,6 @@ it('should handle fetch error', async () => {
     expect(result.current.error).toBeTruthy();
   });
 });
-
 ```
 
 ### 条件渲染
@@ -596,7 +573,6 @@ it('should show empty state', () => {
   render(<DataList data={[]} />);
   expect(screen.getByText(/no data/i)).toBeInTheDocument();
 });
-
 ```
 
 ## 测试检查清单

@@ -92,7 +92,6 @@
 --foreground: #111827;
 --muted: #6b7280;
 --border: #e5e7eb;
-
 ```
 
 ### 排版系统
