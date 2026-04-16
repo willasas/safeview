@@ -1405,9 +1405,9 @@ export const NAV_DATA: NavItem[] = [
   },
   {
     id: "153",
-    name: "扩展迷",
-    description: "Chrome 插件扩展商店，提供各类浏览器插件和工具推荐",
-    url: "https://www.extfans.com/",
+    name: "Crx搜搜",
+    description: "支持 Chrome、Edge、火狐浏览器扩展和 Microsoft 应用商店软件搜索下载，资源丰富，下载速度快。",
+    url: "https://www.crxsoso.com",
     icon: "🔌",
     tags: ["扩展商店", "开发工具"],
     stats: { views: 0, likes: 0 },
@@ -3346,7 +3346,139 @@ export const NAV_DATA: NavItem[] = [
     icon: "🎓",
     tags: ["AI教学", "学习助手", "多Agent"],
     stats: { views: 0, likes: 0 }
-  }
+  },
+  {
+    id: "369",
+    name: "Anime Scene Search Engine",
+    description: "专业动漫截图搜索引擎，识图找动漫必备！我们可以点击文件夹图标上传截图、将图片拖入页面、粘贴图片链接三种方式上传图片。",
+    url: "https://trace.moe",
+    icon: "💬",
+    tags: ["识图", "找动漫"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "370",
+    name: "通用媒体下载器",
+    description: "免费简洁的多平台视频下载工具。支持 B 站、抖音、小红书的音频、视频、图文解析下载。在输入框中粘贴视频链接后，点击解析按钮，即可选择视频或音频开始下载。无需注册登录，完全免费，不限下载次数，手机和电脑都能使用。",
+    url: "https://downloader.bhwa233.com/zh",
+    icon: "💬",
+    tags: ["多平台", "视频下载"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "371",
+    name: "PDF24",
+    description: "PDF工具，支持PDF创建、编辑、转换、合并、分割、加密、解密、旋转、添加水印、删除页面、提取文本、提取图片、PDF转Word、PDF转Excel、PDF转PPT、Word转PDF、Excel转PDF、PPT转PDF。",
+    url: "https://tools.pdf24.org/zh/",
+    icon: "💬",
+    tags: ["PDF工具", "文档处理", "在线转换"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "372",
+    name: "ai-money-maker-handbook",
+    description: "这是一个关于用AI搞副业赚钱的实战手册，说白了就是教你如何利用AI技术（比如做自媒体、开发小产品）在业余时间赚取额外收入。它收集了大量的案例、工具和平台信息，特别适合想搞副业但不知道从哪下手的开发者或内容创作者。",
+    url: "https://github.com/XiaomingX/ai-money-maker-handbook",
+    icon: "💬",
+    tags: ["AI变现", "副业", "赚钱工具"],
+    stats: { views: 0, likes: 0 }
+  },
+  {
+    id: "373",
+    name: "Photopea",
+    description: "在线修图工具，无需安装。支持PSD/AI/Sketch等专业格式，功能对标Photoshop，包含图层、蒙版、滤镜等，完全免费，无广告无水印，操作在本地完成。",
+    url: "https://www.photopea.com",
+    icon: "🎨",
+    tags: ["图片编辑", "在线工具", "设计师必备"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "374",
+    name: "Krita",
+    description: "自由开源的免费数字绘画软件。适合概念图、插画、漫画、动画制作。支持数位板压感、图层、滤镜，内置完整官方中文支持。",
+    url: "https://krita.org/zh/",
+    icon: "✍️",
+    tags: ["绘画", "开源", "动画制作"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "375",
+    name: "OBS Studio",
+    description: "免费开源的视频录制与直播串流软件。支持多平台，画质清晰，资源占用少，被全球数百万创作者用于录课、直播、会议存档等。",
+    url: "https://obsproject.com/zh-cn/download",
+    icon: "📹",
+    tags: ["录屏", "直播", "视频制作"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "376",
+    name: "KDE Connect",
+    description: "实现手机与电脑无缝协同的开源工具。支持共享剪贴板、跨设备文件互传、用手机当电脑遥控器/触摸板、同步手机通知，数据本地传输。",
+    url: "https://apps.kde.org/zh-cn/kdeconnect/",
+    icon: "🔗",
+    tags: ["效率工具", "跨设备", "文件传输"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "377",
+    name: "FireAlpaca",
+    description: "免费、轻量级的数字绘画软件，兼容Mac和Windows。特别适合快速制作GIF等短动画，提供丰富笔刷，软件体积小巧。",
+    url: "https://firealpaca.com/",
+    icon: "🦙",
+    tags: ["绘画", "动画", "GIF制作"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "378",
+    name: "VLC media player",
+    description: "自由、开源的跨平台多媒体播放器。可播放绝大多数音视频格式、光盘、设备及流媒体，无需额外编解码器。无广告、无跟踪。",
+    url: "https://www.videolan.org/vlc/",
+    icon: "▶️",
+    tags: ["媒体播放", "万能播放器", "开源"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "379",
+    name: "ScreenToGif",
+    description: "开源免费的屏幕、摄像头和画板录制工具，专精于GIF制作。可录制屏幕任意区域及绘画过程，并具备集成编辑器，适合制作教程。",
+    url: "https://www.screentogif.com/",
+    icon: "🔄",
+    tags: ["GIF录制", "屏幕录制", "教程制作"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "380",
+    name: "File Converter",
+    description: "简单易用的免费开源文件格式转换工具。最大特色是集成到系统右键菜单，支持视频、音频、图片、文档的批量一键转换与压缩。提供电脑端(Windows)和手机端(Android)。",
+    url: "https://file-converter.org/",
+    icon: "📁",
+    tags: ["格式转换", "批量处理", "效率工具"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
 ];
 
 // 获取所有唯一标签
