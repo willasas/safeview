@@ -3479,6 +3479,30 @@ export const NAV_DATA: NavItem[] = [
       likes: 0
     }
   },
+  {
+    id: "381",
+    name: "ScreenPipe",
+    description: "基于您的操作行为，为您在后台运行的智能体提供 AI 记忆功能。",
+    url: "https://github.com/screenpipe/screenpipe",
+    icon: "🎞️",
+    tags: ["操作记录", "AI驱动", "智能记忆"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "382",
+    name: "Flycut Caption",
+    description: "一个强大的 AI 驱动的视频字幕编辑工具，专注于智能字幕生成、编辑和视频裁剪。",
+    url: "https://github.com/x007xyz/flycut-caption",
+    icon: "🎞️",
+    tags: ["字幕编辑", "视频裁剪", "AI驱动"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
 ];
 
 // 获取所有唯一标签

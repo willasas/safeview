@@ -35,6 +35,7 @@
   - web-vitals 监控示例
 
 **原有章节优化**:
+
 - 环境变量管理增加 `NEXT_PUBLIC_` 前缀说明
 - CI/CD 流程增加冒烟测试
 - 监控和日志增加 Sentry、Lighthouse CI 推荐
@@ -174,9 +175,9 @@
   ```
        /\
       /  \     E2E Tests (10%)
-     /----\    
+     /----\
     /      \   Integration Tests (20%)
-   /--------\  
+   /--------\
   /          \ Unit Tests (70%)
   ```
 
@@ -185,12 +186,12 @@
      - 覆盖率目标: > 80%
      - AAA 模式（Arrange-Act-Assert）
      - Mock 和 Stub 使用
-  
+
   2. **集成测试** - React Testing Library
      - 覆盖率目标: 关键路径 100%
      - 组件交互测试
      - API 调用测试
-  
+
   3. **E2E 测试** - Playwright/Cypress
      - 覆盖率目标: 关键用户流程 100%
      - 跨浏览器测试
