@@ -3503,6 +3503,30 @@ export const NAV_DATA: NavItem[] = [
       likes: 0
     }
   },
+  {
+    id: "383",
+    name: "Redpanda AI",
+    description: "AI 图像生成器和照片编辑器，用文字创建精美的 AI 艺术作品，或使用我们强大的在线 AI 图像编辑软件转换现有照片。从文本生成图像到图像生成图像转换，一站式满足所有需求。",
+    url: "https://redpandaai.com/zh/image/models/z-image-turbo",
+    icon: "🖼️",
+    tags: ["图片处理", "在线生图", "AI生图"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
+  {
+    id: "384",
+    name: "Stable Diffusion AI",
+    description: "图像生成器用 Stable Diffusion AI 把文字提示词变成高质量图像。写实照片、动漫插画、幻想场景和数字艺术都能在线快速生成，无需注册。",
+    url: "https://stabledifffusion.com/zh/features/ai-image-generator",
+    icon: "📷",
+    tags: ["图片处理", "在线生图", "AI生图"],
+    stats: {
+      views: 0,
+      likes: 0
+    }
+  },
 ];
 
 // 获取所有唯一标签
